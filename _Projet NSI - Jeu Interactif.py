@@ -15,7 +15,6 @@ pygame.init()
 
 
 
-
 # Création de la fenetre
 
 fenetre = tkinter.Tk()
@@ -5889,6 +5888,90 @@ def ChapC_4(event):
     pygame.mixer.music.fadeout(400)
     Cd1(event)
 
+
+#----------------------------
+#-------- Inventaire --------
+#----------------------------
+
+def INVENTAIRE(event):
+    feninv = tkinter.Tk()
+    feninv.title("Inventaire")
+
+    def NOINVENTAIRE(event):
+        feninv.destroy()
+        fenetre.bind("<Button-3>", INVENTAIRE)
+
+
+    #Labels
+
+    inv_nom = tkinter.Label(feninv, text="Nom : " + nom)
+    inv_niveau = tkinter.Label(feninv, text="Niveau : " + str(niveau))
+    inv_force = tkinter.Label(feninv, text="Force : " + str(force))
+    inv_agilite = tkinter.Label(feninv, text="Agilité : " + str(agilite))
+    inv_intelligence = tkinter.Label(feninv, text="Intelligence : " + str(intelligence))
+    inv_Charisme = tkinter.Label(feninv, text="Charisme : " + str(charisme))
+    
+
+    inv_text = "\n Vous avez :"
+    if Epee == True:
+        inv_text = inv_text + "\n -Une Epée"
+    if Pistolet == True:
+        inv_text = inv_text + "\n -Un Pistolet"
+    if Flute == True:
+        inv_text = inv_text + "\n -Une Flute"
+    if Partitions == True:
+        inv_text = inv_text + "\n -Des Partitions"
+    if Carte_Monopoly == True:
+        inv_text = inv_text + "\n -Une Carte Monopoly"
+    if Carte_Monopoly == False and Partitions == False and Flute == False and Pistolet == False and Epee == False:
+        inv_text = inv_text + "\n Rien =)"
+    inv_label = tkinter.Label(feninv, text=inv_text)
+    
+    #Boutons
+    inv_stats_bouton = tkinter.Button(feninv, text="Statistiques")
+    inv_inv_bouton = tkinter.Button(feninv, text="Inventaire")
+
+    inv_stats_bouton.grid(column=1,row=0)
+    inv_inv_bouton.grid(column=3,row=0)
+
+
+    
+    # Statistiques
+    def Inv_Stats(event):
+        inv_label.grid_forget()
+        inv_stats_bouton.unbind("<Button-1>")
+        
+        inv_nom.grid(column=2,row=1)
+        inv_niveau.grid(column=2,row=2)
+        inv_force.grid(column=2,row=3)
+        inv_agilite.grid(column=2,row=4)
+        inv_intelligence.grid(column=2,row=5)
+        inv_Charisme.grid(column=2,row=6)
+        inv_inv_bouton.bind("<Button-1>", Inv_inv)
+
+    #Inventaire
+    
+    def Inv_inv(event):
+        inv_nom.grid_forget()
+        inv_niveau.grid_forget()
+        inv_force.grid_forget()
+        inv_agilite.grid_forget()
+        inv_intelligence.grid_forget()
+        inv_Charisme.grid_forget()
+        inv_inv_bouton.unbind("<Button-1>")
+
+        inv_label.grid(column=2,row=1)
+        inv_stats_bouton.bind("<Button-1>", Inv_Stats)
+
+
+    inv_inv_bouton.bind("<Button-1>", Inv_inv)
+    inv_stats_bouton.bind("<Button-1>", Inv_Stats)   
+    feninv.bind("<Button-3>", NOINVENTAIRE)
+    fenetre.bind("<Button-3>", NOINVENTAIRE)
+    feninv.mainloop()
+    
+
+fenetre.bind("<Button-3>", INVENTAIRE)
 
 #----------------------------
 #-------- Menu DEBUG --------
