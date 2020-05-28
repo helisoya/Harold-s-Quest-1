@@ -6004,6 +6004,8 @@ def menu(event):
     FIN_Button.pack_forget()
     NomJeu.pack(padx=10, pady=10)
     Commencer.pack(padx=10, pady=10)
+    ChargerPartie.pack(padx=10, pady=10)
+    ChargerPartie.bind("<Button-1>", chargement)
     Commencer.bind("<Button-1>", ExplicationRegles)
 
 
