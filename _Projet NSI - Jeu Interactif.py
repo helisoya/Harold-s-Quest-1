@@ -8,6 +8,8 @@ from tkinter import simpledialog
 from tkinter import messagebox
 from math import *
 import random
+import configparser
+from distutils.util import strtobool
 
 import pygame
 from pygame import mixer
@@ -66,6 +68,7 @@ Continuer3 = tkinter.Button(fenetre, text=">", bg="grey")
 #-----Menu------
 NomJeu = tkinter.Label(fenetre, text="Ceci est le projet NSI portant sur un jeu interactif. \n \n Cliquez sur commencer")
 Commencer = tkinter.Button(fenetre, text="Commencer", bg="grey")
+ChargerPartie = tkinter.Button(fenetre, text="Continuer", bg="grey")
 
 #------FIN-------
 FIN_Desc = tkinter.Label(fenetre, text="FIN")
@@ -120,6 +123,10 @@ force = 0
 intelligence = 0
 charisme = 0
 
+
+Checkpoint = "Rien"
+Checkpoint_mus = "Rien"
+
 #Opérateurs logiques
 
 Echec = False
@@ -157,6 +164,9 @@ Partitions = False
 Pistolet = False
 Carte_Monopoly = False
 
+
+
+Loaded = False
 
 
 #------------ Sons -----------
@@ -230,6 +240,11 @@ SE_RickRoll = pygame.mixer.Sound("Musique\SE\RickRoll.wav")
 
 
 def Aa1(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Aa1"
+    Checkpoint_mus = BGM_Reve
+    if Loaded == True:
+        Loaded = False
     pygame.mixer.music.load(BGM_Reve)
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.2)
@@ -308,6 +323,15 @@ def Aa11(event):
 
 
 def Aa12(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Aa12"
+    Checkpoint_mus = BGM_Reve
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="Qu’est ce qu’il y a ici ?")
     Continuer1.bind("<Button-1>", Aa13)
@@ -396,6 +420,15 @@ def Aa27(event):
 
 
 def Aa28(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Aa28"
+    Checkpoint_mus = BGM_Tension
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     NomPerso.config(text="Dragon", fg="red")
     Dialogue.config(text="Grr!")
     Continuer1.bind("<Button-1>", Aa29)
@@ -562,6 +595,11 @@ def Aa44(event):
 #----------------------------------------
 
 def Ab1(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ab1"
+    Checkpoint_mus = "Rien"
+    if Loaded == True:
+        Loaded = False
     #---------------------------
     Chap1.pack_forget()
     NewGame.pack_forget()
@@ -610,6 +648,15 @@ def Ab6(event):
 #----------------------------------------
 
 def Ab7(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ab7"
+    Checkpoint_mus = BGM_Harold
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     pygame.mixer.music.load(BGM_Harold)
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.2)
@@ -660,6 +707,15 @@ def Ab15(event):
 #----------------------------------------
 
 def Ab16(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ab16"
+    Checkpoint_mus = BGM_Harold
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     Dialogue.config(text="J’ai compris !")
     Continuer1.bind("<Button-1>", Ab17)
 
@@ -704,6 +760,15 @@ def Ab23(event):
 #----------------------------------------
 
 def Ab24(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ab24"
+    Checkpoint_mus = BGM_Harold
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="Écoutez, je ne pense pas que je suis votre «guerrier», \n vous devez vous tromper.")
     Continuer1.bind("<Button-1>", Ab25)
@@ -789,6 +854,15 @@ def Ab35(event):
 #----------------------------------------
 
 def Ab36(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ab36"
+    Checkpoint_mus = BGM_Harold
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     NomPerso.config(text="Harold", fg="green")
     Dialogue.config(text="Formidable, je vais tout vous expliquer.")
     Continuer1.bind("<Button-1>", Ab37)
@@ -866,6 +940,15 @@ def Ab50(event):
 #----------------------------------------
 
 def Ab51(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ab51"
+    Checkpoint_mus = BGM_Harold
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="Vraiment ?")
     Continuer1.bind("<Button-1>", Ab52)
@@ -996,6 +1079,11 @@ def Ab61(event):
 
 
 def Ac1(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ac1"
+    Checkpoint_mus = "Rien"
+    if Loaded == True:
+        Loaded = False
     pygame.mixer.music.fadeout(400)
     #---------------------------
     Chap1.pack_forget()
@@ -1037,6 +1125,15 @@ def Ac5(event):
 #----------------------------------------
 
 def Ac6(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ac6"
+    Checkpoint_mus = BGM_Maison
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     pygame.mixer.music.load(BGM_Maison)
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.2)
@@ -1085,6 +1182,15 @@ def Ac14(event):
 #----------------------------------------
 
 def Ac15(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ac15"
+    Checkpoint_mus = BGM_Maison
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     NomPerso.config(text="")
     Dialogue.config(text="Je commence par chercher dans le salon.")
     Continuer1.bind("<Button-1>", Ac16)
@@ -1164,6 +1270,15 @@ def Ac20(event):
 #----------------------------------------
 
 def Ac21(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ac21"
+    Checkpoint_mus = BGM_Maison
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     Dialogue.config(text="La cuisine, elle aussi, est bien rangée.")
     Continuer1.bind("<Button-1>", Ac22)
 
@@ -1242,6 +1357,15 @@ def Ac26(event):
 #----------------------------------------
 
 def Ac27(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ac27"
+    Checkpoint_mus = BGM_Maison
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     Dialogue.config(text="J’ouvre la porte et…")
     Continuer1.bind("<Button-1>", Ac28)
 
@@ -1350,7 +1474,11 @@ def Ac36(event):
 #----------------------------------------
 
 def Ad1(event):
-    global ChambreHaroldOuverte
+    global Checkpoint,Checkpoint_mus, ChambreHaroldOuverte, Loaded
+    Checkpoint = "Ad1"
+    Checkpoint_mus = BGM_Maison
+    if Loaded == True:
+        Loaded = False
     ChambreHaroldOuverte = True
     #---------------------------
     Chap1.pack_forget()
@@ -1414,6 +1542,15 @@ def Ad8(event):
 #----------------------------------------
 
 def Ad9(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ad9"
+    Checkpoint_mus = BGM_Tension
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     NomPerso.config(text="")
     Dialogue.config(text="La chauve-souris essaye de m’attaquer.")
     Continuer1.bind("<Button-1>", Ad10)
@@ -1499,6 +1636,16 @@ def Ad17(event):
 #----------------------------------------
 
 def Ad18(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ad18"
+    Checkpoint_mus = BGM_Maison
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
+        
     if Pistolet == False:
         Dialogue.config(text="Il y a toujours l'arme sur la table.")
         Continuer1.config(text="La prendre")
@@ -1608,6 +1755,15 @@ def Ad24b(event):
 #----------------------------------------
 
 def Ad27(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ad27"
+    Checkpoint_mus = BGM_Maison
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     NomPerso.config(text="")
     Dialogue.config(text="N’ayant rien trouvé,\n je décide de fouiller la pièce.")
     Continuer1.bind("<Button-1>", Ad28)
@@ -1648,6 +1804,15 @@ def Ad33(event):
 #----------------------------------------
 
 def Ae1(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ae1"
+    Checkpoint_mus = BGM_Maison
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     if ChambreHaroldOuverte == True:
         NomPerso.config(text="")
         Dialogue.config(text="N’ayant pas d’autre piste, \n je me dirige vers l’entrée.")
@@ -1737,6 +1902,11 @@ def Ae7(event):
 
 
 def Ba1(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ba1"
+    Checkpoint_mus = BGM_Exterieur
+    if Loaded == True:
+        Loaded = False
     pygame.mixer.music.fadeout(400)
     pygame.mixer.music.load(BGM_Exterieur)
     pygame.mixer.music.play(-1)
@@ -1803,6 +1973,15 @@ def Ba10(event):
 #----------------------------------------
 
 def Ba11(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ba11"
+    Checkpoint_mus = BGM_Exterieur
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     NomPerso.config(text="")
     Dialogue.config(text="Mon regard se pose sur une voiture.")
     Continuer1.bind("<Button-1>", Ba12)
@@ -1841,6 +2020,15 @@ def Ba17(event):
 #----------------------------------------
 
 def Ba18(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ba18"
+    Checkpoint_mus = BGM_Exterieur
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     Dialogue.config(text="Une fois sortis, je regarde autour de moi...")
     Continuer1.bind("<Button-1>", Ba19)
 
@@ -1994,6 +2182,15 @@ def Ba27(event):
 #----------------------------------------
 
 def Ba28(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ba28"
+    Checkpoint_mus = BGM_Exterieur
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     Dialogue.config(text="Après 30 minutes de marche, \n j'arrive à une intersection.")
     Continuer1.bind("<Button-1>", Ba29)
 
@@ -2078,6 +2275,11 @@ def Ba34b(event):
 #----------------------------------------
 
 def Bb1(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Bb1"
+    Checkpoint_mus = BGM_Exterieur
+    if Loaded == True:
+        Loaded = False
     #---------------------------
     Chap2.pack_forget()
     NewGame.pack_forget()
@@ -2145,6 +2347,15 @@ def Bb6(event):
 #----------------------------------------
 
 def Bb7(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Bb7"
+    Checkpoint_mus = BGM_Exterieur
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     NomPerso.config(text=nom, fg="blue")
     if LockDisney == True:
         Dialogue.config(text="Bonjour, je sais que votre seigneur se cache ici, \n et je compte le terrasser.")
@@ -2211,6 +2422,15 @@ def Bb16(event):
 #----------------------------------------
 
 def Bb17(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Bb17"
+    Checkpoint_mus = BGM_DisneyLand
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     pygame.mixer.music.fadeout(400)
     pygame.mixer.music.load(BGM_DisneyLand)
     pygame.mixer.music.play(-1)
@@ -2270,6 +2490,15 @@ def Bb26(event):
 #----------------------------------------
 
 def Bb27(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Bb27"
+    Checkpoint_mus = BGM_DisneyLand
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     Dialogue.config(text="Après quelques metres,  \n j'aperçois un étrange marchand.")
     Continuer1.bind("<Button-1>", Bb28)
 
@@ -2547,6 +2776,15 @@ def Bb47c(event):
 
 
 def Bb51(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Bb51"
+    Checkpoint_mus = BGM_DisneyLand
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     NomPerso.config(text="")
     Dialogue.config(text="Je continue ensuite ma route vers le chateau.")
     Continuer1.bind("<Button-1>", Bb52)
@@ -2711,6 +2949,15 @@ def Bb65b(event):
 #----------------------------------------
 
 def Bb69(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Bb69"
+    Checkpoint_mus = BGM_DisneyLand
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     NomPerso.config(text="")
     Dialogue.config(text="Je me retrouve une fois de plus \n en direction du chateau.")
     Continuer1.bind("<Button-1>", Bb70)
@@ -2797,6 +3044,15 @@ def Bb75b(event):
 #----------------------------------------
 
 def Bb80(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Bb80"
+    Checkpoint_mus = BGM_DisneyLand
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     NomPerso.config(text="")
     Dialogue.config(text="Je me dirige alors vers le chateau.")
     Continuer1.bind("<Button-1>", Bb81)
@@ -2899,6 +3155,11 @@ def Bb94(event):
 #----------------------------------------
 
 def Bc1(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Bc1"
+    Checkpoint_mus = BGM_Exterieur
+    if Loaded == True:
+        Loaded = False
     #---------------------------
     Chap2.pack_forget()
     NewGame.pack_forget()
@@ -2994,6 +3255,15 @@ def Bc10(event):
 #----------------------------------------
 
 def Bc11(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Bc11"
+    Checkpoint_mus = BGM_Marais
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     pygame.mixer.music.fadeout(400)
     pygame.mixer.music.load(BGM_Marais)
     pygame.mixer.music.play(-1)
@@ -3059,6 +3329,15 @@ def Bc20(event):
 #----------------------------------------
 
 def Bc21(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Bc21"
+    Checkpoint_mus = BGM_Marais
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     Dialogue.config(text="Je doit faire très attention.")
     Continuer1.config(text="Avancer (Agilité 2)")
     Continuer1.bind("<Button-1>", Bc22)
@@ -3116,6 +3395,15 @@ def Bc27(event):
 #----------------------------------------
 
 def Bc28(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Bc28"
+    Checkpoint_mus = BGM_Marais
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     Dialogue.config(text="Après quelque temps, \n j'arrive vers un rocher.")
     Continuer1.bind("<Button-1>", Bc29)
 
@@ -3197,6 +3485,15 @@ def Bc39(event):
 #----------------------------------------
 
 def Bc40(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Bc140"
+    Checkpoint_mus = BGM_Marais
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     Dialogue.config(text="En route, j'arrive vers un ruisseau.")
     Continuer1.bind("<Button-1>", Bc41)
 
@@ -3292,6 +3589,15 @@ def Bc48(event):
 #----------------------------------------
 
 def Bc49(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Bc49"
+    Checkpoint_mus = BGM_Marais
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     Dialogue.config(text="Après quelque minutes, \n j'arrive enfin vers la sortie du marais.")
     Continuer1.bind("<Button-1>", Bc50)
 
@@ -3437,6 +3743,15 @@ def Bc52c(event):
 #----------------------------------------
 
 def Bc65(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Bc65"
+    Checkpoint_mus = BGM_Marais
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     NomPerso.config(text="")
     Dialogue.config(text="Après quelque temps, \n j'arrive au bout du marais.")
     Continuer1.bind("<Button-1>", Bc66)
@@ -3583,6 +3898,11 @@ def Bc82(event):
 #----------------------------------------
 
 def Ca1(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ca1"
+    Checkpoint_mus = BGM_Exterieur
+    if Loaded == True:
+        Loaded = False
     pygame.mixer.music.fadeout(400)
     pygame.mixer.music.load(BGM_Exterieur)
     pygame.mixer.music.play(-1)
@@ -3692,6 +4012,15 @@ def Ca12(event):
 #----------------------------------------
 
 def Ca13(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ca13"
+    Checkpoint_mus = BGM_Exterieur
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     Dialogue.config(text="Après quelque temps, \n j'arrive à l'entrée du chateau.")
     Continuer1.bind("<Button-1>", Ca14)
 
@@ -3842,6 +4171,15 @@ def Ca29(event):
 #----------------------------------------
 
 def Ca30(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ca30"
+    Checkpoint_mus = BGM_GARDE
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     Dialogue.config(text="Que venez-vous faire ici ?")
     Continuer1.bind("<Button-1>", Ca31)
 
@@ -4121,6 +4459,11 @@ def Ca53(event):
 #----------------------------------------
 
 def Cb1(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Cb1"
+    Checkpoint_mus = BGM_Chateau
+    if Loaded == True:
+        Loaded = False
     pygame.mixer.music.fadeout(400)
     pygame.mixer.music.load(BGM_Chateau)
     pygame.mixer.music.play(-1)
@@ -4287,6 +4630,15 @@ def Cb9(event):
 #----------------------------------------
 
 def Cb10(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Cb10"
+    Checkpoint_mus = BGM_GARDE
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     pygame.mixer.music.fadeout(400)
     pygame.mixer.music.load(BGM_GARDE)
     pygame.mixer.music.play(-1)
@@ -4507,6 +4859,11 @@ def Cb29(event):
 #----------------------------------------
 
 def Cc1(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Cc1"
+    Checkpoint_mus = BGM_Chateau
+    if Loaded == True:
+        Loaded = False
     #---------------------------
     Chap3.pack_forget()
     NewGame.pack_forget()
@@ -4637,6 +4994,16 @@ def Cc22(event):
 #----------------------------------------
 
 def Cc23(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Cc23"
+    Checkpoint_mus = BGM_Dragon
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
+        pygame.mixer.music.set_volume(0.1)
     NomPerso.config(text="")
     Dialogue.config(text="Le Dragon se prépare à me tuer.")
     Continuer1.bind("<Button-1>", Cc24)
@@ -4987,6 +5354,15 @@ def Dragon_flute7(event):
 
 
 def Cc25(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Cc25"
+    Checkpoint_mus = "Rien"
+    if Loaded == True:
+        Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     NomPerso.config(text="")
     Dialogue.config(text="La confrontation gagnée, \n je cherche les clefs.")
     Continuer1.bind("<Button-1>", Cc26)
@@ -5025,6 +5401,11 @@ def Cc30(event):
 
 
 def Cd1(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Cd1"
+    Checkpoint_mus = "Rien"
+    if Loaded == True:
+        Loaded = False
     #---------------------------
     Chap3.pack_forget()
     NewGame.pack_forget()
@@ -5122,6 +5503,11 @@ def Cd9b(event):
 #----------------------------------------
 
 def Ce1(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Ce1"
+    Checkpoint_mus = BGM_Fin
+    if Loaded == True:
+        Loaded = False
     pygame.mixer.music.fadeout(400)
     pygame.mixer.music.load(BGM_Fin)
     pygame.mixer.music.play(-1)
@@ -5283,6 +5669,12 @@ def Ce30(event):
 #----------------------------------------
 
 def Cf1(event):
+    global Checkpoint,Checkpoint_mus, Loaded
+    Checkpoint = "Cf1"
+    Checkpoint_mus = BGM_Fuite
+    if Loaded == True:
+        Loaded = False
+        pygame.mixer.music.set_volume(0.15)
     pygame.mixer.music.fadeout(400)
     pygame.mixer.music.load(BGM_Fuite)
     pygame.mixer.music.play(-1)
@@ -5477,6 +5869,7 @@ def Porterandom():
 def ChoixCahpitre(event):
     NomJeu.pack_forget()
     Commencer.pack_forget()
+    ChargerPartie.pack_forget()
     DescChoixChap.pack(padx=10, pady=10)
     NewGame.pack(padx=10, pady=10)
     Chap1.pack(padx=10, pady=10)
@@ -5532,7 +5925,7 @@ def Chapitre3(event):
 #------------- Stats ----------------
 
 def ExplicationRegles(event):
-    global Epee, Flute, Partitions, Pistolet, Carte_Monopoly, ChambreHaroldOuverte, LockMarais, LockDisney, NbMauvaisesActions_Disney, VolMarchand, VolXP, MenacePassant, ErreurMarais, PassMarais, PassDisney, Augmentation, GARDE_Hostille, GARDE_Sympa, bonusobtenu, DragonTue, DragonCharme, DragonBlaze
+    global Epee, Flute, Partitions, Pistolet, Carte_Monopoly, ChambreHaroldOuverte, LockMarais, LockDisney, NbMauvaisesActions_Disney, VolMarchand, VolXP, MenacePassant, ErreurMarais, PassMarais, PassDisney, Augmentation, GARDE_Hostille, GARDE_Sympa, bonusobtenu, DragonTue, DragonCharme, DragonBlaze, Checkpoint, Checkpoint_mus
     Epee = False
     Flute = False
     Partitions = False
@@ -5555,6 +5948,8 @@ def ExplicationRegles(event):
     DragonTue = False
     DragonCharme = False
     DragonBlaze = False
+    Checkpoint = "Rien"
+    Checkpoint_mus = "Rien"
     print("----------------------------------------------------------------")
     print("Bienvenue sur le projet NSI portant sur l'histoire interactive")
     print("Pour avancer dans le jeu, cliquez sur les boutons '>'")
@@ -5564,6 +5959,9 @@ def ExplicationRegles(event):
     print("Vous possédez 4 types de statistiques qui vous permettrons de réussir certains choix")
     print("De temps en temps, vous allez gagner des niveaux")
     print("Tout les niveaux pairs, vous allez pouvoir améliorer vos statistiques")
+    print()
+    print("Faites un clique droit pour afficher l'inventaire.")
+    print("Les sauvegardes vous rammenent aux checkpoints (Début de sous partie).")
     print()
     print("Amusez-vous bien !")
     print()
@@ -5889,6 +6287,110 @@ def ChapC_4(event):
     Cd1(event)
 
 
+
+#----------------------------
+#------ Sauvegarde ----------
+#----------------------------
+
+def sauvegarde(event):
+    config = configparser.ConfigParser()
+
+    config['Checkpoint'] = {'Checkpoint': Checkpoint,
+                            'Checkpoint_mus': Checkpoint_mus,}
+
+    config['Stats'] = {'Nom': nom,
+                        'Niveau': niveau,
+                        'Force': force,
+                        'Agilité': agilite,
+                        'Intelligence': intelligence,
+                        'Charisme': charisme,}
+
+    config['Items'] = {'Epée': Epee,
+                        'Pistolet': Pistolet,
+                        'Flute': Flute,
+                        'Partitions': Partitions,
+                        'Carte Monopoly': Carte_Monopoly,}
+
+    config['Operateurs'] = {'Echec': Echec,
+                        'Augmentation': Augmentation,
+                        'ChambreHaroldOuverte': ChambreHaroldOuverte,
+                        'LockMarais': LockMarais,
+                        'LockDisney': LockDisney,
+                        'NbMauvaisesActions_Disney': NbMauvaisesActions_Disney,
+                        'VolMarchand': VolMarchand,
+                        'VolXP': VolXP,
+                        'MenacePassant': MenacePassant,
+                        'ErreurMarais': ErreurMarais,
+                        'PassMarais': PassMarais,
+                        'PassDisney': PassDisney,
+                        'GARDE_Sympa': GARDE_Sympa,
+                        'GARDE_Hostille': GARDE_Hostille,
+                        'bonusobtenu': bonusobtenu,
+                        'DragonTue': DragonTue,
+                        'DragonCharme': DragonCharme,
+                        'DragonBlaze': DragonBlaze,}
+    with open('save.ini', 'w') as configfile:
+        config.write(configfile)
+
+def chargement(event):
+    global Loaded, Echec, nom, niveau, agilite, force, charisme, intelligence, Epee, Flute, Partitions, Pistolet, Carte_Monopoly, ChambreHaroldOuverte, LockMarais, LockDisney, NbMauvaisesActions_Disney, VolMarchand, VolXP, MenacePassant, ErreurMarais, PassMarais, PassDisney, Augmentation, GARDE_Hostille, GARDE_Sympa, bonusobtenu, DragonTue, DragonCharme, DragonBlaze, Checkpoint, Checkpoint_mus
+    config = configparser.ConfigParser()
+    if config.read('save.ini'):
+        if config['Checkpoint']['Checkpoint'] != "Rien":
+
+            Checkpoint = config['Checkpoint']['Checkpoint']
+            Checkpoint_mus = config['Checkpoint']['Checkpoint_mus']
+
+            nom = config['Stats']['Nom']
+            niveau = int(config['Stats']['Niveau'])
+            agilite = int(config['Stats']['Force'])
+            force = int(config['Stats']['Agilité'])
+            intelligence = int(config['Stats']['Intelligence'])
+            charisme = int(config['Stats']['Charisme'])
+            
+            Epee = bool(strtobool(config['Items']['Epée']))
+            Flute = bool(strtobool(config['Items']['Pistolet']))
+            Partitions = bool(strtobool(config['Items']['Flute']))
+            Pistolet = bool(strtobool(config['Items']['Partitions']))
+            Carte_Monopoly = bool(strtobool(config['Items']['Carte Monopoly']))
+
+            Echec = bool(strtobool(config['Operateurs']['Echec']))
+            Augmentation = bool(strtobool(config['Operateurs']['Augmentation']))
+            ChambreHaroldOuverte = bool(strtobool(config['Operateurs']['ChambreHaroldOuverte']))
+            LockMarais = bool(strtobool(config['Operateurs']['LockMarais']))
+            LockDisney = bool(strtobool(config['Operateurs']['LockDisney']))
+            NbMauvaisesActions_Disney = int(config['Operateurs']['NbMauvaisesActions_Disney'])
+            VolMarchand = bool(strtobool(config['Operateurs']['VolMarchand']))
+            VolXP = bool(strtobool(config['Operateurs']['VolXP']))
+            MenacePassant = bool(strtobool(config['Operateurs']['MenacePassant']))
+            ErreurMarais = int(config['Operateurs']['ErreurMarais'])
+            PassMarais = bool(strtobool(config['Operateurs']['PassMarais']))
+            PassDisney = bool(strtobool(config['Operateurs']['PassDisney']))
+            GARDE_Sympa = int(config['Operateurs']['GARDE_Sympa'])
+            GARDE_Hostille = int(config['Operateurs']['GARDE_Hostille'])
+            bonusobtenu = bool(strtobool(config['Operateurs']['bonusobtenu']))
+            DragonTue = bool(strtobool(config['Operateurs']['DragonTue']))
+            DragonCharme = bool(strtobool(config['Operateurs']['DragonCharme']))
+            DragonBlaze = bool(strtobool(config['Operateurs']['DragonBlaze']))
+
+            if Checkpoint_mus != "Rien":
+                pygame.mixer.music.load(Checkpoint_mus)
+                pygame.mixer.music.play(-1)
+                pygame.mixer.music.set_volume(0.2)
+            else:
+                pygame.mixer.music.fadeout(400)
+
+            NomJeu.pack_forget()
+            Commencer.pack_forget()
+            ChargerPartie.pack_forget()
+
+            Loaded = True
+
+            ToLoad = eval(Checkpoint)
+            ToLoad(event)
+
+    
+
 #----------------------------
 #-------- Inventaire --------
 #----------------------------
@@ -5930,8 +6432,10 @@ def INVENTAIRE(event):
     #Boutons
     inv_stats_bouton = tkinter.Button(feninv, text="Statistiques")
     inv_inv_bouton = tkinter.Button(feninv, text="Inventaire")
+    inv_save = tkinter.Button(feninv, text="Sauvegarder")
 
     inv_stats_bouton.grid(column=1,row=0)
+    inv_save.grid(column=2,row=0)
     inv_inv_bouton.grid(column=3,row=0)
 
 
@@ -5965,7 +6469,8 @@ def INVENTAIRE(event):
 
 
     inv_inv_bouton.bind("<Button-1>", Inv_inv)
-    inv_stats_bouton.bind("<Button-1>", Inv_Stats)   
+    inv_stats_bouton.bind("<Button-1>", Inv_Stats)
+    inv_save.bind("<Button-1>", sauvegarde)
     feninv.bind("<Button-3>", NOINVENTAIRE)
     fenetre.bind("<Button-3>", NOINVENTAIRE)
     feninv.mainloop()
@@ -6079,9 +6584,12 @@ fenetre.bind("<Insert>", DEBUGMENU)
 pygame.mixer.music.load(BGM_Menu)
 pygame.mixer.music.play(-1)
 pygame.mixer.music.set_volume(0.2)
+
 NomJeu.pack(padx=10, pady=10)
 Commencer.pack(padx=10, pady=10)
+ChargerPartie.pack(padx=10, pady=10)
 Commencer.bind("<Button-1>", ExplicationRegles)
+ChargerPartie.bind("<Button-1>", chargement)
 
 
 #Lancement du jeu
