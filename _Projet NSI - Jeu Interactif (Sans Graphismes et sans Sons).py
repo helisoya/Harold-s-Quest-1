@@ -186,6 +186,7 @@ def Aa1(event):
     Checkpoint = "Aa1"
     if Loaded == True:
         Loaded = False
+    sauvegarde()
     #---------------------------
     Chap1.pack_forget()
     Chap2.pack_forget()
@@ -269,6 +270,7 @@ def Aa12(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="Qu’est ce qu’il y a ici ?")
     Continuer1.bind("<Button-1>", Aa13)
@@ -359,6 +361,7 @@ def Aa28(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     NomPerso.config(text="Dragon", fg="red")
     Dialogue.config(text="Grr!")
     Continuer1.bind("<Button-1>", Aa29)
@@ -523,6 +526,7 @@ def Ab1(event):
     Checkpoint = "Ab1"
     if Loaded == True:
         Loaded = False
+    sauvegarde()
     #---------------------------
     Chap1.pack_forget()
     NewGame.pack_forget()
@@ -578,6 +582,7 @@ def Ab7(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="Ah !")
     Continuer1.bind("<Button-1>", Ab8)
@@ -633,6 +638,7 @@ def Ab16(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     Dialogue.config(text="J’ai compris !")
     Continuer1.bind("<Button-1>", Ab17)
 
@@ -685,6 +691,7 @@ def Ab24(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="Écoutez, je ne pense pas que je suis votre «guerrier», \n vous devez vous tromper.")
     Continuer1.bind("<Button-1>", Ab25)
@@ -778,6 +785,7 @@ def Ab36(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     NomPerso.config(text="Harold", fg="green")
     Dialogue.config(text="Formidable, je vais tout vous expliquer.")
     Continuer1.bind("<Button-1>", Ab37)
@@ -863,6 +871,7 @@ def Ab51(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="Vraiment ?")
     Continuer1.bind("<Button-1>", Ab52)
@@ -997,6 +1006,7 @@ def Ac1(event):
     Checkpoint = "Ac1"
     if Loaded == True:
         Loaded = False
+    sauvegarde()
     #---------------------------
     Chap1.pack_forget()
     NewGame.pack_forget()
@@ -1045,6 +1055,7 @@ def Ac6(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     NomPerso.config(text="")
     Dialogue.config(text="Je sort de la pièce.")
     Continuer1.bind("<Button-1>", Ac7)
@@ -1098,6 +1109,7 @@ def Ac15(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     NomPerso.config(text="")
     Dialogue.config(text="Je commence par chercher dans le salon.")
     Continuer1.bind("<Button-1>", Ac16)
@@ -1185,6 +1197,7 @@ def Ac21(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     Dialogue.config(text="La cuisine, elle aussi, est bien rangée.")
     Continuer1.bind("<Button-1>", Ac22)
 
@@ -1271,6 +1284,7 @@ def Ac27(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     Dialogue.config(text="J’ouvre la porte et…")
     Continuer1.bind("<Button-1>", Ac28)
 
@@ -1382,6 +1396,7 @@ def Ad1(event):
     if Loaded == True:
         Loaded = False
     ChambreHaroldOuverte = True
+    sauvegarde()
     #---------------------------
     Chap1.pack_forget()
     NewGame.pack_forget()
@@ -1448,6 +1463,7 @@ def Ad9(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     NomPerso.config(text="")
     Dialogue.config(text="La chauve-souris essaye de m’attaquer.")
     Continuer1.bind("<Button-1>", Ad10)
@@ -1535,6 +1551,7 @@ def Ad18(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
         
     if Pistolet == False:
         Dialogue.config(text="Il y a toujours l'arme sur la table.")
@@ -1700,6 +1717,7 @@ def Ae1(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
         
     if ChambreHaroldOuverte == True:
         NomPerso.config(text="")
@@ -1793,6 +1811,7 @@ def Ba1(event):
     Checkpoint = "Ba1"
     if Loaded == True:
         Loaded = False
+    sauvegarde()
     #---------------------------
     Chap2.pack_forget()
     NewGame.pack_forget()
@@ -1863,6 +1882,7 @@ def Ba11(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     NomPerso.config(text="")
     Dialogue.config(text="Mon regard se pose sur une voiture.")
     Continuer1.bind("<Button-1>", Ba12)
@@ -1909,6 +1929,7 @@ def Ba18(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     Dialogue.config(text="Une fois sortis, je regarde autour de moi...")
     Continuer1.bind("<Button-1>", Ba19)
 
@@ -2070,6 +2091,7 @@ def Ba28(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     Dialogue.config(text="Après 30 minutes de marche, \n j'arrive à une intersection.")
     Continuer1.bind("<Button-1>", Ba29)
 
@@ -2158,6 +2180,7 @@ def Bb1(event):
     Checkpoint = "Bb1"
     if Loaded == True:
         Loaded = False
+    sauvegarde()
     #---------------------------
     Chap2.pack_forget()
     NewGame.pack_forget()
@@ -2233,6 +2256,7 @@ def Bb7(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     NomPerso.config(text=nom, fg="blue")
     if LockDisney == True:
         Dialogue.config(text="Bonjour, je sais que votre seigneur se cache ici, \n et je compte le terrasser.")
@@ -2306,6 +2330,7 @@ def Bb17(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="...")
     Continuer1.bind("<Button-1>", Bb18)
@@ -2369,6 +2394,7 @@ def Bb27(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     Dialogue.config(text="Après quelques metres,  \n j'aperçois un étrange marchand.")
     Continuer1.bind("<Button-1>", Bb28)
 
@@ -2654,6 +2680,7 @@ def Bb51(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     NomPerso.config(text="")
     Dialogue.config(text="Je continue ensuite ma route vers le chateau.")
     Continuer1.bind("<Button-1>", Bb52)
@@ -2818,6 +2845,7 @@ def Bb69(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     NomPerso.config(text="")
     Dialogue.config(text="Je me retrouve une fois de plus \n en direction du chateau.")
     Continuer1.bind("<Button-1>", Bb70)
@@ -2912,6 +2940,7 @@ def Bb80(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     NomPerso.config(text="")
     Dialogue.config(text="Je me dirige alors vers le chateau.")
     Continuer1.bind("<Button-1>", Bb81)
@@ -3017,6 +3046,7 @@ def Bc1(event):
     Checkpoint = "Bc1"
     if Loaded == True:
         Loaded = False
+    sauvegarde()
     #---------------------------
     Chap2.pack_forget()
     NewGame.pack_forget()
@@ -3120,6 +3150,7 @@ def Bc11(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     Dialogue.config(text="Après quelque temps, \n j'arrive vers un marais.")
     Continuer1.bind("<Button-1>", Bc12)
 
@@ -3189,6 +3220,7 @@ def Bc21(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     Dialogue.config(text="Je doit faire très attention.")
     Continuer1.config(text="Avancer (Agilité 2)")
     Continuer1.bind("<Button-1>", Bc22)
@@ -3253,6 +3285,7 @@ def Bc28(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     Dialogue.config(text="Après quelque temps, \n j'arrive vers un rocher.")
     Continuer1.bind("<Button-1>", Bc29)
 
@@ -3342,6 +3375,7 @@ def Bc40(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     Dialogue.config(text="En route, j'arrive vers un ruisseau.")
     Continuer1.bind("<Button-1>", Bc41)
 
@@ -3444,6 +3478,7 @@ def Bc49(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     Dialogue.config(text="Après quelque minutes, \n j'arrive enfin vers la sortie du marais.")
     Continuer1.bind("<Button-1>", Bc50)
 
@@ -3597,6 +3632,7 @@ def Bc65(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     NomPerso.config(text="")
     Dialogue.config(text="Après quelque temps, \n j'arrive au bout du marais.")
     Continuer1.bind("<Button-1>", Bc66)
@@ -3741,6 +3777,7 @@ def Ca1(event):
     Checkpoint = "Ca1"
     if Loaded == True:
         Loaded = False
+    sauvegarde()
     #---------------------------
     Chap3.pack_forget()
     NewGame.pack_forget()
@@ -3854,6 +3891,7 @@ def Ca13(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     Dialogue.config(text="Après quelque temps, \n j'arrive à l'entrée du chateau.")
     Continuer1.bind("<Button-1>", Ca14)
 
@@ -4008,6 +4046,7 @@ def Ca30(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     Dialogue.config(text="Que venez-vous faire ici ?")
     Continuer1.bind("<Button-1>", Ca31)
 
@@ -4288,6 +4327,7 @@ def Cb1(event):
     Checkpoint = "Cb1"
     if Loaded == True:
         Loaded = False
+    sauvegarde()
     #---------------------------
     Chap3.pack_forget()
     NewGame.pack_forget()
@@ -4457,6 +4497,7 @@ def Cb10(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     NomPerso.config(text="???", fg="burlywood")
     Dialogue.config(text="PAS SI VITE !")
     Continuer1.bind("<Button-1>", Cb11)
@@ -4672,6 +4713,7 @@ def Cc1(event):
     Checkpoint = "Cc1"
     if Loaded == True:
         Loaded = False
+    sauvegarde()
     #---------------------------
     Chap3.pack_forget()
     NewGame.pack_forget()
@@ -4805,6 +4847,7 @@ def Cc23(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     NomPerso.config(text="")
     Dialogue.config(text="Le Dragon se prépare à me tuer.")
     Continuer1.bind("<Button-1>", Cc24)
@@ -5150,6 +5193,7 @@ def Cc25(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     NomPerso.config(text="")
     Dialogue.config(text="La confrontation gagnée, \n je cherche les clefs.")
     Continuer1.bind("<Button-1>", Cc26)
@@ -5192,6 +5236,7 @@ def Cd1(event):
     Checkpoint = "Cd1"
     if Loaded == True:
         Loaded = False
+    sauvegarde()
     #---------------------------
     Chap3.pack_forget()
     NewGame.pack_forget()
@@ -5297,6 +5342,7 @@ def Ce1(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     Dialogue.config(text="Arrivé, je sonne.")
     Continuer1.bind("<Button-1>", Ce2)
 
@@ -5460,6 +5506,7 @@ def Cf1(event):
         NomPerso.pack(padx=10, pady=10)
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
+    sauvegarde()
     Dialogue.config(text="Arrivé, j'ouvre la voiture.")
     Continuer1.bind("<Button-1>", Cf2)
 
@@ -5738,7 +5785,7 @@ def ExplicationRegles(event):
     print("Tout les niveaux pairs, vous allez pouvoir améliorer vos statistiques")
     print()
     print("Faites un clique droit pour afficher l'inventaire.")
-    print("Les sauvegardes vous rammenent aux checkpoints (Début de sous partie).")
+    print("Les sauvegardes sont automatiques.")
     print()
     print("Amusez-vous bien !")
     print()
@@ -6013,7 +6060,7 @@ def menu(event):
 #------ Sauvegarde ----------
 #----------------------------
 
-def sauvegarde(event):
+def sauvegarde():
     config = configparser.ConfigParser()
 
     config['Checkpoint'] = {'Checkpoint': Checkpoint,}
@@ -6143,10 +6190,8 @@ def INVENTAIRE(event):
     #Boutons
     inv_stats_bouton = tkinter.Button(feninv, text="Statistiques")
     inv_inv_bouton = tkinter.Button(feninv, text="Inventaire")
-    inv_save = tkinter.Button(feninv, text="Sauvegarder")
 
     inv_stats_bouton.grid(column=1,row=0)
-    inv_save.grid(column=2,row=0)
     inv_inv_bouton.grid(column=3,row=0)
 
 
@@ -6180,7 +6225,6 @@ def INVENTAIRE(event):
 
 
     inv_inv_bouton.bind("<Button-1>", Inv_inv)
-    inv_save.bind("<Button-1>", sauvegarde)
     inv_stats_bouton.bind("<Button-1>", Inv_Stats)   
     feninv.bind("<Button-3>", NOINVENTAIRE)
     fenetre.bind("<Button-3>", NOINVENTAIRE)
@@ -6295,11 +6339,13 @@ fenetre.bind("<Insert>", DEBUGMENU)
 #----Menu Principal(doit etre en dernier)------
 NomJeu.pack(padx=10, pady=10)
 Commencer.pack(padx=10, pady=10)
-ChargerPartie.pack(padx=10, pady=10)
 
 Commencer.bind("<Button-1>", ExplicationRegles)
-ChargerPartie.bind("<Button-1>", chargement)
 
+config = configparser.ConfigParser()
+if config.read('save_minimal.ini'):
+    ChargerPartie.pack(padx=10, pady=10)
+    ChargerPartie.bind("<Button-1>", chargement)
 
 #Lancement du jeu
 fenetre.mainloop()
