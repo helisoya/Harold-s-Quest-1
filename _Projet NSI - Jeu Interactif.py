@@ -4,12 +4,10 @@
 # Importations
 import tkinter
 import time
-from tkinter import simpledialog
-from tkinter import messagebox
 from math import *
 import random
-import configparser
-from distutils.util import strtobool
+from functools import partial
+
 
 import pygame
 from pygame import mixer
@@ -69,6 +67,7 @@ Continuer3 = tkinter.Button(fenetre, text=">", bg="grey")
 NomJeu = tkinter.Label(fenetre, text="Ceci est le projet NSI portant sur un jeu interactif. \n \n Cliquez sur commencer")
 Commencer = tkinter.Button(fenetre, text="Commencer", bg="grey")
 ChargerPartie = tkinter.Button(fenetre, text="Continuer", bg="grey")
+Aide = tkinter.Button(fenetre, text="Aide", bg="grey")
 
 #------FIN-------
 FIN_Desc = tkinter.Label(fenetre, text="FIN")
@@ -110,6 +109,9 @@ Chap3_4 = tkinter.Button(fenetre, text="Moment Critique", bg="grey")
 # Pacifier GARDE - (ENTRER DANS LE CHATEAU AU CHAPITRE 3) - 1 lv
 # Potion magique - (TROUVER LA SALLE SECRETE AU CHAPITRE 3) - 1/2 lv
 # Pacifier le Dragon - (BATTRE LE DRAGON AU CHAPITRE 3) - 1 lv
+
+# LV max = 9 / soit 4 points suplémentaires
+#Points de base = 18
 
 
 #Stats
@@ -5913,11 +5915,16 @@ def Porterandom():
                 portebonus = random.randint(1,3)
 
 
+def NoClose():
+    pass
+
 #---------- Selection de Chapitre ------------
 def ChoixCahpitre(event):
+    fenetre.attributes('-disabled', False)
     NomJeu.pack_forget()
     Commencer.pack_forget()
     ChargerPartie.pack_forget()
+    Aide.pack_forget()
     DescChoixChap.pack(padx=10, pady=10)
     NewGame.pack(padx=10, pady=10)
     Chap1.pack(padx=10, pady=10)
@@ -5972,7 +5979,7 @@ def Chapitre3(event):
 
 #------------- Stats ----------------
 
-def ExplicationRegles(event):
+def Reset(event):
     global Epee, Flute, Partitions, Pistolet, Carte_Monopoly, ChambreHaroldOuverte, LockMarais, LockDisney, NbMauvaisesActions_Disney, VolMarchand, VolXP, MenacePassant, ErreurMarais, PassMarais, PassDisney, Augmentation, GARDE_Hostille, GARDE_Sympa, bonusobtenu, DragonTue, DragonCharme, DragonBlaze, Checkpoint, Checkpoint_mus
     Epee = False
     Flute = False
@@ -5998,107 +6005,180 @@ def ExplicationRegles(event):
     DragonBlaze = False
     Checkpoint = "Rien"
     Checkpoint_mus = "Rien"
-    print("----------------------------------------------------------------")
-    print("Bienvenue sur le projet NSI portant sur l'histoire interactive")
-    print("Pour avancer dans le jeu, cliquez sur les boutons '>'")
-    print("Vous aurez de temps en temps des choix qui seront important pour la suite")
-    print("Choisissez bien car vous pouvez perdre !")
-    print()
-    print("Vous possédez 4 types de statistiques qui vous permettrons de réussir certains choix")
-    print("De temps en temps, vous allez gagner des niveaux")
-    print("Tout les niveaux pairs, vous allez pouvoir améliorer vos statistiques")
-    print()
-    print("Faites un clique droit pour afficher l'inventaire.")
-    print("Les sauvegardes sont automatiques.")
-    print()
-    print("Amusez-vous bien !")
-    print()
-    print("----------------------------------------------------------------")
-    print()
-    creation_perso(event)
+    fenetre.attributes('-disabled', True)
+    ChoixNom(event)
+    
+    
 
-def creation_perso(event):
-    global agilite, force, intelligence, charisme, nom, niveau
-    nomchoisi = input("Entrez le nom du joueur ")
-    if nomchoisi != "":
-        nom = nomchoisi
-    else:
-        num = random.randint(0,len(tabnom)-1)
-        nom = tabnom[num]
-    niveau = 1
-    print()
-    print("Pour l'instant, les statistiques sont décidés au hasard")
-    agilite = random.randint(1,10)
-    force = random.randint(1,10)
-    intelligence = random.randint(1,10)
-    charisme = random.randint(1,10)
-    print()
-    print("Votre nom est : ",nom)
-    print("Vous etes au niveau ",niveau)
-    print("Votre force est de : ", force)
-    print("Votre agilité est de : ", agilite)
-    print("Votre intelligence est de : ", intelligence)
-    print("Votre charisme est de : ", charisme)
-    print()
-    ChoixCahpitre(event)
+#CreationPerso
 
+def ChoixNom(event):
+    fenNom = tkinter.Tk()
+    fenNom.title("Création du Personnage")
+    fenNom.protocol("WM_DELETE_WINDOW", NoClose)
+    Nom_StringVar = tkinter.StringVar(fenNom)
+
+    Nom_Desc = tkinter.Label(fenNom, text="Entrez votre nom :")
+    Nom_Entry = tkinter.Entry(fenNom, textvariable=Nom_StringVar)
+    Nom_Button = tkinter.Button(fenNom, text ="Confirmer")
+    Nom_Desc.pack(padx=2,pady=2)
+    Nom_Entry.pack(padx=2,pady=2)
+    Nom_Button.pack(padx=2,pady=2)
+
+    def ConfirmerNom(event):
+        global nom
+        nom_choix = Nom_StringVar.get()
+        if nom_choix == "":
+            nom = tabnom[random.randint(0,len(tabnom)-1)]
+        else:
+            nom = nom_choix
+        fenNom.destroy()
+        CreationPerso(event)
+
+    Nom_Button.bind("<Button-1>", ConfirmerNom)
+
+def CreationPerso(event):
+    Max_base = 18
+    Max = 18
+
+    fenCreation = tkinter.Tk()
+    fenCreation.title("Création du Personnage")
+    fenCreation.protocol("WM_DELETE_WINDOW", NoClose)
+    F_value = tkinter.IntVar(fenCreation)
+    A_value = tkinter.IntVar(fenCreation)
+    I_value = tkinter.IntVar(fenCreation)
+    C_value = tkinter.IntVar(fenCreation)
+
+
+    Points_desc = tkinter.Label(fenCreation, text="Assignez vos points dans les compétences ci dessous. \n Il vous en reste :")
+    Points_desc.grid(row=0, column=0)
+
+    Max_Label = tkinter.Label(fenCreation, text="18")
+    Max_Label.grid(row=1, column=0)
+
+    Confirmer = tkinter.Button(fenCreation, text="Confirmer")
+
+    F_Label = tkinter.Label(fenCreation, text="<- Force")
+    A_Label = tkinter.Label(fenCreation, text="<- Agilité")
+    I_Label = tkinter.Label(fenCreation, text="<- Intelligence")
+    C_Label = tkinter.Label(fenCreation, text="<- Charisme")
+    F_Label.grid(row=2, column=1)
+    A_Label.grid(row=3, column=1)
+    I_Label.grid(row=4, column=1)
+    C_Label.grid(row=5, column=1)
+
+
+
+    def Max_Update(F_value, A_value, I_value, C_value, Label):
+        global Max
+        Max = Max_base - F_value.get() - A_value.get() - I_value.get() - C_value.get()
+        Label.configure(text=Max)
+        if Max == 0:
+            Confirmer.grid(row=6, column=0)
+            Confirmer.bind("<Button-1>", ConfirmerCreation)
+        else:
+            Confirmer.grid_forget()
+
+    F_spinbox = tkinter.Spinbox(fenCreation, textvariable=F_value, from_=0, to=10, increment=1)
+    A_spinbox = tkinter.Spinbox(fenCreation, textvariable=A_value, from_=0, to=10, increment=1)
+    I_spinbox = tkinter.Spinbox(fenCreation, textvariable=I_value, from_=0, to=10, increment=1)
+    C_spinbox = tkinter.Spinbox(fenCreation, textvariable=C_value, from_=0, to=10, increment=1)
+
+    F_spinbox.config(command=partial(Max_Update, F_value, A_value, I_value, C_value, Max_Label))
+    A_spinbox.config(command=partial(Max_Update, F_value, A_value, I_value, C_value, Max_Label))
+    I_spinbox.config(command=partial(Max_Update, F_value, A_value, I_value, C_value, Max_Label))
+    C_spinbox.config(command=partial(Max_Update, F_value, A_value, I_value, C_value, Max_Label))
+
+
+    F_spinbox.grid(row=2, column=0)
+    A_spinbox.grid(row=3, column=0)
+    I_spinbox.grid(row=4, column=0)
+    C_spinbox.grid(row=5, column=0)
+
+
+    def ConfirmerCreation(event):
+        global force, agilite, intelligence, charisme
+        force = F_value.get()
+        agilite = A_value.get()
+        intelligence = I_value.get()
+        charisme = C_value.get()
+        fenCreation.destroy()
+        ChoixCahpitre(event)
+        fenetre.bind("<Button-3>", INVENTAIRE)
+        
+    fenCreation.mainloop()
+    
+# LevelUp
 
 def LevelUp(event):
-    SE_LevelUp.play()
     global niveau, agilite, force, intelligence, charisme
-    PointBienPlace = False
-    niveau = niveau + 1
-    print()
-    print("Vous êtes passé au niveau ", niveau)
-    print()
-    if niveau%2 == 0 and agilite+force+intelligence+charisme < 40:
-        print("Vous pouvez assigner 1 point supplémentaire dans une statistique au choix.")
-        print("Vous ne pouvez pas excéder 10 points dans une statistique.")
-        print("Votre force est de : ", force)
-        print("Votre agilité est de : ", agilite)
-        print("Votre intelligence est de : ", intelligence)
-        print("Votre charisme est de : ", charisme)
-        while PointBienPlace == False:
-            print()
-            rep = input("Choisissiez une de vos statistiques (F/A/I/C)")
-            if rep == "F" or rep == "f":
-                if force + 1 < 11:
-                    force = force+1
-                    PointBienPlace = True
-                else:
-                    print("Action Impossible, veuillez réessayer")
-            elif rep == "A" or rep == "a":
-                if agilite + 1 < 11:
-                    agilite = agilite+1
-                    PointBienPlace = True
-                else:
-                    print("Action Impossible, veuillez réessayer")
-            elif rep == "I" or rep == "i":
-                if intelligence + 1 < 11:
-                    intelligence = intelligence+1
-                    PointBienPlace = True
-                else:
-                    print("Action Impossible, veuillez réessayer")
-            elif rep == "C" or rep == "c":
-                if charisme + 1 < 11:
-                    charisme = charisme+1
-                    PointBienPlace = True
-                else:
-                    print("Action Impossible, veuillez réessayer")
-            else:
-                print("Action Impossible, veuillez réessayer")
-        print()
-        print("Action réussit")
-        print()
-        print("Votre force est de : ", force)
-        print("Votre agilité est de : ", agilite)
-        print("Votre intelligence est de : ", intelligence)
-        print("Votre charisme est de : ", charisme)
-        print()
-    else:
-        print("Vous ne pouvez pas attribuer de points supplémentaire pour ce niveau")
-        print()
+    SE_LevelUp.play()
+    fenLevelUp = tkinter.Tk()
+    fenLevelUp.title("Niveau")
 
+    niveau = niveau + 1
+
+    def FUp(event):
+        global force
+        force = force +1
+        fenLevelUp.destroy()
+
+    def AUp(event):
+        global agilite
+        agilite = agilite +1
+        fenLevelUp.destroy()
+
+    def IUp(event):
+        global intelligence
+        intelligence = intelligence +1
+        fenLevelUp.destroy()
+
+    def CUp(event):
+        global charisme
+        charisme = charisme +1
+        fenLevelUp.destroy()
+
+    # Labels
+    LevelUp_Desc = tkinter.Label(fenLevelUp, text="Vous êtes passé au niveau " + str(niveau))
+
+    Force_Label = tkinter.Label(fenLevelUp, text="Force " + str(force))
+    Agilite_Label = tkinter.Label(fenLevelUp, text="Agilité " + str(agilite))
+    Intelligence_Label = tkinter.Label(fenLevelUp, text="Intelligence " + str(intelligence))
+    Charisme_Label = tkinter.Label(fenLevelUp, text="Charisme " + str(charisme))
+    
+    Force_Button = tkinter.Button(fenLevelUp, text="Force "+ str(force) + " -> " + str(force+1))
+    Agilte_Button = tkinter.Button(fenLevelUp, text="Agilité "+ str(agilite) + " -> " + str(agilite+1))
+    Intelligence_Button = tkinter.Button(fenLevelUp, text="Intelligence "+ str(intelligence) + " -> " + str(intelligence+1))
+    Charisme_Button = tkinter.Button(fenLevelUp, text="Charisme "+ str(charisme) + " -> " + str(charisme+1))
+
+    LevelUp_Desc.pack(padx=5, pady=5)
+
+    if niveau%2 == 0 and force+agilite+intelligence+charisme < 40:
+        fenLevelUp.protocol("WM_DELETE_WINDOW", NoClose)
+        LevelUp_Desc.configure(text="Vous êtes passé au niveau " + str(niveau) + "\n \n Choisissez une compétence ou \n placer un point supplémentaire.")
+        if force < 10:
+            Force_Button.pack(padx=5, pady=5)
+            Force_Button.bind("<Button-1>", FUp)
+        else:
+            Force_Label.pack(padx=5, pady=5)
+        if agilite < 10:
+            Agilte_Button.pack(padx=5, pady=5)
+            Agilte_Button.bind("<Button-1>", AUp)
+        else:
+            Agilte_Label.pack(padx=5, pady=5)
+        if intelligence < 10:
+            Intelligence_Button.pack(padx=5, pady=5)
+            Intelligence_Button.bind("<Button-1>", IUp)
+        else:
+            Intelligence_Label.pack(padx=5, pady=5)
+        if charisme < 10:
+            Charisme_Button.pack(padx=5, pady=5)
+            Charisme_Button.bind("<Button-1>", CUp)
+        else:
+            Charisme_Label.pack(padx=5, pady=5)
+    else:
+        LevelUp_Desc.configure(text="Vous êtes passé au niveau " + str(niveau) + "\n \n Vous ne pouvez pas attrivuer \n de point supplémentaire à ce niveau. \n \n Force : " + str(force) + "\n Agilité : " + str(agilite) + "\n Intelligence : " + str(intelligence)+ "\n Charisme : " + str(charisme))
+    fenLevelUp.mainloop()
 
 #------------ FINS ---------------
 
@@ -6294,7 +6374,9 @@ def menu(event):
     Commencer.pack(padx=10, pady=10)
     ChargerPartie.pack(padx=10, pady=10)
     ChargerPartie.bind("<Button-1>", chargement)
-    Commencer.bind("<Button-1>", ExplicationRegles)
+    Commencer.bind("<Button-1>", Reset)
+    Aide.pack(padx=10, pady=10)
+    Aide.bind("<Button-1>", Jeu_Aide)
 
 
 
@@ -6343,101 +6425,123 @@ def ChapC_4(event):
 #----------------------------
 
 def sauvegarde():
-    config = configparser.ConfigParser()
+    save_file = open("save.txt", "w")
 
-    config['Checkpoint'] = {'Checkpoint': Checkpoint,
-                            'Checkpoint_mus': Checkpoint_mus,}
+    save_file.write(str(Checkpoint) + " \n") #0
+    save_file.write(str(Checkpoint_mus)+ " \n") #1
 
-    config['Stats'] = {'Nom': nom,
-                        'Niveau': niveau,
-                        'Force': force,
-                        'Agilité': agilite,
-                        'Intelligence': intelligence,
-                        'Charisme': charisme,}
+    save_file.write(str(nom)+ " \n") #2
+    save_file.write(str(niveau)+ " \n") #3
+    save_file.write(str(force)+ " \n") #4
+    save_file.write(str(agilite)+ " \n") #5
+    save_file.write(str(intelligence)+ " \n") #6
+    save_file.write(str(charisme)+ " \n") #7
 
-    config['Items'] = {'Epée': Epee,
-                        'Pistolet': Pistolet,
-                        'Flute': Flute,
-                        'Partitions': Partitions,
-                        'Carte Monopoly': Carte_Monopoly,}
+    save_file.write(str(Epee)+ " \n") #8
+    save_file.write(str(Pistolet)+ " \n") #9
+    save_file.write(str(Flute)+ " \n") #10
+    save_file.write(str(Partitions)+ " \n") #11
+    save_file.write(str(Carte_Monopoly)+ " \n") #12
+    
+    save_file.write(str(Echec)+ " \n") #13
+    save_file.write(str(Augmentation)+ " \n") #14
+    save_file.write(str(ChambreHaroldOuverte)+ " \n") #15
+    save_file.write(str(LockMarais)+ " \n") #16
+    save_file.write(str(LockDisney)+ " \n") #17
+    save_file.write(str(NbMauvaisesActions_Disney)+ " \n") #18
+    save_file.write(str(VolMarchand)+ " \n") #19
+    save_file.write(str(VolXP)+ " \n")#20
+    save_file.write(str(MenacePassant)+ " \n") #21
+    save_file.write(str(ErreurMarais)+ " \n") #22
+    save_file.write(str(PassMarais)+ " \n") #23
+    save_file.write(str(PassDisney)+ " \n") #24
+    save_file.write(str(GARDE_Sympa)+ " \n") #25
+    save_file.write(str(GARDE_Hostille)+ " \n") #26
+    save_file.write(str(bonusobtenu)+ " \n") #27
+    save_file.write(str(DragonTue)+ " \n") #28
+    save_file.write(str(DragonCharme)+ " \n")#29
+    save_file.write(str(DragonBlaze)+ " \n") #30
 
-    config['Operateurs'] = {'Echec': Echec,
-                        'Augmentation': Augmentation,
-                        'ChambreHaroldOuverte': ChambreHaroldOuverte,
-                        'LockMarais': LockMarais,
-                        'LockDisney': LockDisney,
-                        'NbMauvaisesActions_Disney': NbMauvaisesActions_Disney,
-                        'VolMarchand': VolMarchand,
-                        'VolXP': VolXP,
-                        'MenacePassant': MenacePassant,
-                        'ErreurMarais': ErreurMarais,
-                        'PassMarais': PassMarais,
-                        'PassDisney': PassDisney,
-                        'GARDE_Sympa': GARDE_Sympa,
-                        'GARDE_Hostille': GARDE_Hostille,
-                        'bonusobtenu': bonusobtenu,
-                        'DragonTue': DragonTue,
-                        'DragonCharme': DragonCharme,
-                        'DragonBlaze': DragonBlaze,}
-    with open('save.ini', 'w') as configfile:
-        config.write(configfile)
+    save_file.close()
+
+
+def SansRetour(string):
+    new_string = ""
+    i = 0
+    while string[i] != " " and i < len(string)-1:
+        new_string = new_string + string[i]
+        i = i + 1
+    return new_string
+
+def StrToBool(String):
+    if String == "False":
+        return False
+    else:
+        return True
+
 
 def chargement(event):
     global Loaded, Echec, nom, niveau, agilite, force, charisme, intelligence, Epee, Flute, Partitions, Pistolet, Carte_Monopoly, ChambreHaroldOuverte, LockMarais, LockDisney, NbMauvaisesActions_Disney, VolMarchand, VolXP, MenacePassant, ErreurMarais, PassMarais, PassDisney, Augmentation, GARDE_Hostille, GARDE_Sympa, bonusobtenu, DragonTue, DragonCharme, DragonBlaze, Checkpoint, Checkpoint_mus
-    config = configparser.ConfigParser()
-    if config.read('save.ini'):
-        if config['Checkpoint']['Checkpoint'] != "Rien":
+    save = open("save.txt", "r")
+    save_file = save.readlines()
 
-            Checkpoint = config['Checkpoint']['Checkpoint']
-            Checkpoint_mus = config['Checkpoint']['Checkpoint_mus']
+    Checkpoint = SansRetour(save_file[0])
+    Checkpoint_mus = SansRetour(save_file[1])
 
-            nom = config['Stats']['Nom']
-            niveau = int(config['Stats']['Niveau'])
-            agilite = int(config['Stats']['Force'])
-            force = int(config['Stats']['Agilité'])
-            intelligence = int(config['Stats']['Intelligence'])
-            charisme = int(config['Stats']['Charisme'])
-            
-            Epee = bool(strtobool(config['Items']['Epée']))
-            Flute = bool(strtobool(config['Items']['Pistolet']))
-            Partitions = bool(strtobool(config['Items']['Flute']))
-            Pistolet = bool(strtobool(config['Items']['Partitions']))
-            Carte_Monopoly = bool(strtobool(config['Items']['Carte Monopoly']))
+    nom = SansRetour(save_file[2])
+    niveau = int(SansRetour(save_file[3]))
+    force = int(SansRetour(save_file[4]))
+    agilite = int(SansRetour(save_file[5]))
+    intelligence = int(SansRetour(save_file[6]))
+    charisme = int(SansRetour(save_file[7]))
 
-            Echec = bool(strtobool(config['Operateurs']['Echec']))
-            Augmentation = bool(strtobool(config['Operateurs']['Augmentation']))
-            ChambreHaroldOuverte = bool(strtobool(config['Operateurs']['ChambreHaroldOuverte']))
-            LockMarais = bool(strtobool(config['Operateurs']['LockMarais']))
-            LockDisney = bool(strtobool(config['Operateurs']['LockDisney']))
-            NbMauvaisesActions_Disney = int(config['Operateurs']['NbMauvaisesActions_Disney'])
-            VolMarchand = bool(strtobool(config['Operateurs']['VolMarchand']))
-            VolXP = bool(strtobool(config['Operateurs']['VolXP']))
-            MenacePassant = bool(strtobool(config['Operateurs']['MenacePassant']))
-            ErreurMarais = int(config['Operateurs']['ErreurMarais'])
-            PassMarais = bool(strtobool(config['Operateurs']['PassMarais']))
-            PassDisney = bool(strtobool(config['Operateurs']['PassDisney']))
-            GARDE_Sympa = int(config['Operateurs']['GARDE_Sympa'])
-            GARDE_Hostille = int(config['Operateurs']['GARDE_Hostille'])
-            bonusobtenu = bool(strtobool(config['Operateurs']['bonusobtenu']))
-            DragonTue = bool(strtobool(config['Operateurs']['DragonTue']))
-            DragonCharme = bool(strtobool(config['Operateurs']['DragonCharme']))
-            DragonBlaze = bool(strtobool(config['Operateurs']['DragonBlaze']))
+    Epee = StrToBool(SansRetour(save_file[8]))
+    Pistolet = StrToBool(SansRetour(save_file[9]))
+    Flute = StrToBool(SansRetour(save_file[10]))
+    Partitions = StrToBool(SansRetour(save_file[11]))
+    Carte_Monopoly = StrToBool(SansRetour(save_file[12]))
 
-            if Checkpoint_mus != "Rien":
-                pygame.mixer.music.load(Checkpoint_mus)
-                pygame.mixer.music.play(-1)
-                pygame.mixer.music.set_volume(0.2)
-            else:
-                pygame.mixer.music.fadeout(400)
+    Echec = StrToBool(SansRetour(save_file[13]))
+    Augmentation = StrToBool(SansRetour(save_file[14]))
+    ChambreHaroldOuverte = StrToBool(SansRetour(save_file[15]))
+    LockMarais = StrToBool(SansRetour(save_file[16]))
+    LockDisney = StrToBool(SansRetour(save_file[17]))
+    NbMauvaisesActions_Disney = int(SansRetour(save_file[18]))
+    VolMarchand = StrToBool(SansRetour(save_file[19]))
+    VolXP = StrToBool(SansRetour(save_file[20]))
+    MenacePassant = StrToBool(SansRetour(save_file[21]))
+    ErreurMarais = int(SansRetour(save_file[22]))
+    PassMarais = StrToBool(SansRetour(save_file[23]))
+    PassDisney = StrToBool(SansRetour(save_file[24]))
+    GARDE_Sympa = int(SansRetour(save_file[25]))
+    GARDE_Hostille = int(SansRetour(save_file[26]))
+    bonusobtenu = StrToBool(SansRetour(save_file[27]))
+    DragonTue = StrToBool(SansRetour(save_file[28]))
+    DragonCharme = StrToBool(SansRetour(save_file[29]))
+    DragonBlaze = StrToBool(SansRetour(save_file[30]))
 
-            NomJeu.pack_forget()
-            Commencer.pack_forget()
-            ChargerPartie.pack_forget()
+    save.close()
 
-            Loaded = True
+    print(Checkpoint_mus)
+    print(Epee)
+        
+    if Checkpoint_mus != "Rien":
+        pygame.mixer.music.load(Checkpoint_mus)
+        pygame.mixer.music.play(-1)
+        pygame.mixer.music.set_volume(0.2)
+    else:
+        pygame.mixer.music.fadeout(400)
 
-            ToLoad = eval(Checkpoint)
-            ToLoad(event)
+    NomJeu.pack_forget()
+    Commencer.pack_forget()
+    ChargerPartie.pack_forget()
+    Aide.pack_forget()
+
+    Loaded = True
+
+    ToLoad = eval(Checkpoint)
+    ToLoad(event)
+    fenetre.bind("<Button-3>", INVENTAIRE)
 
     
 
@@ -6448,6 +6552,7 @@ def chargement(event):
 def INVENTAIRE(event):
     feninv = tkinter.Tk()
     feninv.title("Inventaire")
+    feninv.protocol("WM_DELETE_WINDOW", NoClose)
 
     def NOINVENTAIRE(event):
         feninv.destroy()
@@ -6523,7 +6628,6 @@ def INVENTAIRE(event):
     feninv.mainloop()
     
 
-fenetre.bind("<Button-3>", INVENTAIRE)
 
 #----------------------------
 #-------- Menu DEBUG --------
@@ -6627,6 +6731,20 @@ def DEBUGMENU(event):
 
 fenetre.bind("<Insert>", DEBUGMENU)
 
+
+#------------ Aide --------------------
+
+def Jeu_Aide(event):
+    fenaide = tkinter.Tk()
+    fenaide.title("Aide")
+
+    Aide_Label = tkinter.Label(fenaide, text="---------------------------------------------------------------- \n Bienvenue sur le projet NSI portant sur l'histoire interactive. \n Pour avancer dans le jeu, cliquez sur les boutons '>'. \n Vous aurez de temps en temps des choix qui seront important pour la suite. \n Choisissez bien car vous pouvez perdre ! \n \n Vous possédez 4 types de statistiques qui vous permettrons de réussir certains choix. \n De temps en temps, vous allez gagner des niveaux. \n Tout les niveaux pairs, vous allez pouvoir améliorer vos statistiques. \n \n Faites un clique droit pour afficher l'inventaire. \n Les sauvegardes sont automatiques. \n ----------------------------------------------------------------")
+    Aide_Label.pack()
+        
+
+
+#--------------------------------------
+
 #----Menu Principal(doit etre en dernier)------
 pygame.mixer.music.load(BGM_Menu)
 pygame.mixer.music.play(-1)
@@ -6635,13 +6753,18 @@ pygame.mixer.music.set_volume(0.2)
 NomJeu.pack(padx=10, pady=10)
 Commencer.pack(padx=10, pady=10)
 
-Commencer.bind("<Button-1>", ExplicationRegles)
+Commencer.bind("<Button-1>", Reset)
 
-config = configparser.ConfigParser()
-if config.read('save.ini'):
+
+try:
+    save_file = open("save.txt", "r")
     ChargerPartie.pack(padx=10, pady=10)
     ChargerPartie.bind("<Button-1>", chargement)
+except IOError :
+    print("")
 
+Aide.pack(padx=10, pady=10)
+Aide.bind("<Button-1>", Jeu_Aide)
 
 #Lancement du jeu
 fenetre.mainloop()
