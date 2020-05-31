@@ -6036,6 +6036,7 @@ def ChoixNom(event):
         CreationPerso(event)
 
     Nom_Button.bind("<Button-1>", ConfirmerNom)
+    fenNom.mainloop()
 
 def CreationPerso(event):
     Max_base = 18
@@ -6521,9 +6522,6 @@ def chargement(event):
     DragonBlaze = StrToBool(SansRetour(save_file[30]))
 
     save.close()
-
-    print(Checkpoint_mus)
-    print(Epee)
         
     if Checkpoint_mus != "Rien":
         pygame.mixer.music.load(Checkpoint_mus)
@@ -6740,7 +6738,8 @@ def Jeu_Aide(event):
 
     Aide_Label = tkinter.Label(fenaide, text="---------------------------------------------------------------- \n Bienvenue sur le projet NSI portant sur l'histoire interactive. \n Pour avancer dans le jeu, cliquez sur les boutons '>'. \n Vous aurez de temps en temps des choix qui seront important pour la suite. \n Choisissez bien car vous pouvez perdre ! \n \n Vous possédez 4 types de statistiques qui vous permettrons de réussir certains choix. \n De temps en temps, vous allez gagner des niveaux. \n Tout les niveaux pairs, vous allez pouvoir améliorer vos statistiques. \n \n Faites un clique droit pour afficher l'inventaire. \n Les sauvegardes sont automatiques. \n ----------------------------------------------------------------")
     Aide_Label.pack()
-        
+
+    fenaide.mainloop()
 
 
 #--------------------------------------
