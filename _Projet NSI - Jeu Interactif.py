@@ -27,7 +27,6 @@ fenetre.iconbitmap(r"icone.ico")
 Decor = tkinter.Label(fenetre, text="Ceci est l'emplacement des images, \n utilisez votre imagination \n (°-°)\n \|/ \n/|", bg="grey")       #C'est l'endroit ou on met les images
 
 
-
 #----Perso-----
 NomPerso = tkinter.Label(fenetre, text="")   # C'est l'endroit ou on met les noms
 
@@ -107,7 +106,7 @@ Chap3_4 = tkinter.Button(fenetre, text="Moment Critique", bg="grey")
 # Arriver à la montagne du Dragon - (FINIR LE CHAPITRE 2) - 1 lv
 
 # Pacifier GARDE - (ENTRER DANS LE CHATEAU AU CHAPITRE 3) - 1 lv
-# Potion magique - (TROUVER LA SALLE SECRETE AU CHAPITRE 3) - 1/2 lv
+# Potion magique - (TROUVER LA SALLE SECRETE AU CHAPITRE 3) - 1 lv
 # Pacifier le Dragon - (BATTRE LE DRAGON AU CHAPITRE 3) - 1 lv
 
 # LV max = 9 / soit 4 points suplémentaires
@@ -213,6 +212,7 @@ SE_Saut = pygame.mixer.Sound("Musique\SE\Saut.wav")
 SE_Sonnerie = pygame.mixer.Sound("Musique\SE\Sonnerie.wav")
 SE_Voiture = pygame.mixer.Sound("Musique\SE\Voiture.wav")
 SE_RickRoll = pygame.mixer.Sound("Musique\SE\RickRoll.wav")
+SE_Objet = pygame.mixer.Sound("Musique\SE\Objet.wav")
 
 #-----------------------------
 
@@ -1012,9 +1012,7 @@ def Ab58a(event):
 def Ab59a(event):
     global Epee
     Epee = True
-    print()
-    print("Vous avez obtenu une Epee")
-    print()
+    SE_Objet.play()
     Dialogue.config(text="Prenez cette épée pour le tuer.")
     Continuer1.bind("<Button-1>", Ab60)
 
@@ -1262,9 +1260,7 @@ def Ac17c(event):
 def Ac18c(event):
     global Partitions
     Partitions = True
-    print()
-    print("Vous avez obtenu des Partitions")
-    print()
+    SE_Objet.play()
     Dialogue.config(text="Je trouve des partitions étranges.")
     Continuer1.bind("<Button-1>", Ac19)
 
@@ -1350,9 +1346,7 @@ def Ac23c(event):
 def Ac24c(event):
     global Flute
     Flute = True
-    print()
-    print("Vous avez obtenu une Flûte")
-    print()
+    SE_Objet.play()
     Dialogue.config(text="Je trouve une étrange flûte.")
     Continuer1.bind("<Button-1>", Ac25)
 
@@ -1597,9 +1591,7 @@ def Ad13a(event):
     SE_Pistolet.play()
     global Pistolet
     Pistolet = True
-    print()
-    print("Vous avez obtenu un Pistolet")
-    print()
+    SE_Objet.play()
     Dialogue.config(text="…et je tire sur la chauve-souris.")
     Continuer1.bind("<Button-1>", Ad14a)
 
@@ -1681,9 +1673,7 @@ def Ad18(event):
 def Ad18a(event):
     global Pistolet
     Pistolet = True
-    print()
-    print("Vous avez obtenu un Pistolet")
-    print()
+    SE_Objet.play()
     Dialogue.config(text="Je prend le Pistolet et \n je regarde en détail l’écran...")
     Continuer1.config(text=">")
     Continuer2.pack_forget()
@@ -2672,9 +2662,7 @@ def Bb48a(event):
     else:
         global Carte_Monopoly
         Carte_Monopoly = True
-        print()
-        print("Vous avez obtenu une Carte Monopoly")
-        print()
+        SE_Objet.play()
         Dialogue.config(text="J'ai réussi.")
     Continuer1.bind("<Button-1>", Bb49a)
 
@@ -2742,9 +2730,7 @@ def Bb48b(event):
     else:
         global Carte_Monopoly
         Carte_Monopoly = True
-        print()
-        print("Vous avez obtenu une Carte Monopoly")
-        print()
+        SE_Objet.play()
         NomPerso.config(text="")
         Dialogue.config(text="Il me donne la carte.")
     Continuer1.bind("<Button-1>", Bb49b)
@@ -4019,9 +4005,7 @@ def Ca11a(event):
         Dialogue.config(text="J'en ai déjà une, \n je n'ai pas besoin de celle-la.")
     else:
         Epee = True
-        print()
-        print("Vous avez obtenu une Epee")
-        print()
+        SE_Objet.play()
         Dialogue.config(text="Ca tombe bien, \n je n'en avais pas.")
     Continuer1.bind("<Button-1>", Ca12)
 
@@ -4550,10 +4534,10 @@ def Cb5(event):
     Continuer1.bind("<Button-1>", Cb6)
 
 def Cb6(event):
-    Porterandom()
     NomPerso.config(text="")
     Dialogue.config(text="Devant moi se dresse 3 portes.")
     Continuer1.bind("<Button-1>", Cb7)
+    Porterandom()
 
 def Cb7(event):
     Dialogue.config(text="Je prend celle....")
@@ -4642,12 +4626,8 @@ def Cb8d(event):
 def Cb8e(event):
     NomPerso.config(text="")
     Dialogue.config(text="Je prend la potion et la boit.")
-    if niveau%2 == 0:
-        LevelUp(event)
-        LevelUp(event)
-    else:
-        LevelUp(event)
     Continuer1.bind("<Button-1>", Cb8f)
+    LevelUp(event)
 
 def Cb8f(event):
     Dialogue.config(text="Après cela, \n je sort de la pièce.")
@@ -6154,7 +6134,7 @@ def LevelUp(event):
 
     LevelUp_Desc.pack(padx=5, pady=5)
 
-    if niveau%2 == 0 and force+agilite+intelligence+charisme < 40:
+    if force+agilite+intelligence+charisme < 40:
         fenLevelUp.protocol("WM_DELETE_WINDOW", NoClose)
         LevelUp_Desc.configure(text="Vous êtes passé au niveau " + str(niveau) + "\n \n Choisissez une compétence ou \n placer un point supplémentaire.")
         if force < 10:
@@ -6736,7 +6716,7 @@ def Jeu_Aide(event):
     fenaide = tkinter.Tk()
     fenaide.title("Aide")
 
-    Aide_Label = tkinter.Label(fenaide, text="---------------------------------------------------------------- \n Bienvenue sur le projet NSI portant sur l'histoire interactive. \n Pour avancer dans le jeu, cliquez sur les boutons '>'. \n Vous aurez de temps en temps des choix qui seront important pour la suite. \n Choisissez bien car vous pouvez perdre ! \n \n Vous possédez 4 types de statistiques qui vous permettrons de réussir certains choix. \n De temps en temps, vous allez gagner des niveaux. \n Tout les niveaux pairs, vous allez pouvoir améliorer vos statistiques. \n \n Faites un clique droit pour afficher l'inventaire. \n Les sauvegardes sont automatiques. \n ----------------------------------------------------------------")
+    Aide_Label = tkinter.Label(fenaide, text="---------------------------------------------------------------- \n Bienvenue sur le projet NSI portant sur l'histoire interactive. \n Pour avancer dans le jeu, cliquez sur les boutons '>'. \n Vous aurez de temps en temps des choix qui seront important pour la suite. \n Choisissez bien car vous pouvez perdre ! \n \n Vous possédez 4 types de statistiques qui vous permettrons de réussir certains choix. \n De temps en temps, vous allez gagner des niveaux. \n A chaque niveau , vous allez pouvoir améliorer vos statistiques. \n \n Faites un clique droit pour afficher l'inventaire. \n Les sauvegardes sont automatiques. \n ----------------------------------------------------------------")
     Aide_Label.pack()
 
     fenaide.mainloop()
