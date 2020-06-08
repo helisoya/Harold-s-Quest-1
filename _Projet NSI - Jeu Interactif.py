@@ -26,11 +26,36 @@ fenetre.iconbitmap(r"icone.ico")
 #----Decor/image-----
 Decor = tkinter.Label(fenetre, text="Ceci est l'emplacement des images, \n utilisez votre imagination \n (°-°)\n \|/ \n/|", bg="grey")       #C'est l'endroit ou on met les images
 
+#------ Decors Chapitre 1-----------
+
+Reve_Couloir = tkinter.PhotoImage(file="Images\Chapitre1\Reve\Couloir.png")
+Reve_Porte = tkinter.PhotoImage(file="Images\Chapitre1\Reve\Porte.png")
+Reve_Salle = tkinter.PhotoImage(file="Images\Chapitre1\Reve\Salle.png")
+Reve_Tresor = tkinter.PhotoImage(file="Images\Chapitre1\Reve\Salle_Trésor.png")
+Reve_Dragon = tkinter.PhotoImage(file="Images\Chapitre1\Reve\Salle_Dragon.png")
+
+Maison_Reveil = tkinter.PhotoImage(file="Images\Chapitre1\Maison\Reveil.png")
+Maison_Harold = tkinter.PhotoImage(file="Images\Chapitre1\Maison\Reveil_Harold.png")
+Maison_Couloir = tkinter.PhotoImage(file="Images\Chapitre1\Maison\Couloir.png")
+Maison_Porte_Entree = tkinter.PhotoImage(file="Images\Chapitre1\Maison\Porte_Entrée.png")
+Maison_Salon = tkinter.PhotoImage(file="Images\Chapitre1\Maison\Salon.png")
+Maison_Cuisine = tkinter.PhotoImage(file="Images\Chapitre1\Maison\Cuisine.png")
+Maison_Porte_Chambre = tkinter.PhotoImage(file="Images\Chapitre1\Maison\Porte_Chambre.png")
+
+Chambre_Normal = tkinter.PhotoImage(file="Images\Chapitre1\Chambre\Chambre.png")
+Chambre_CS = tkinter.PhotoImage(file="Images\Chapitre1\Chambre\Chambre_ChauveSouris.png")
+Chambre_Nid = tkinter.PhotoImage(file="Images\Chapitre1\Chambre\Chambre_Nid.png")
+
+PC_Arme_Normal = tkinter.PhotoImage(file="Images\Chapitre1\Bureau\Bureau_Arme_Click.png")
+PC_Arme_DED = tkinter.PhotoImage(file="Images\Chapitre1\Bureau\Bureau_Arme_DED.png")
+PC_Normal = tkinter.PhotoImage(file="Images\Chapitre1\Bureau\Bureau_Click.png")
+PC_DED = tkinter.PhotoImage(file="Images\Chapitre1\Bureau\Bureau_DED.png")
+
 
 #----Perso-----
 NomPerso = tkinter.Label(fenetre, text="")   # C'est l'endroit ou on met les noms
 
-# Noms random au cas ou on n'en entre pas
+# Noms random au cas ou l'on ne choisi pas de nom
 
 tabnom = ["Billy",
           "Figurant n°42",
@@ -266,6 +291,7 @@ def Aa1(event):
     NomPerso.pack(padx=10, pady=10)
     Dialogue.pack(padx=10, pady=10)
     Continuer1.pack(padx=10, pady=10)
+    Decor.config(image=Reve_Couloir)
     NomPerso.config(text="")
     Dialogue.config(text="J’ouvre les yeux.")
     Continuer1.config(text=">")
@@ -298,6 +324,7 @@ def Aa7(event):
     Continuer1.bind("<Button-1>", Aa8)
 
 def Aa8(event):
+    Decor.config(image=Reve_Porte)
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="Oh ?")
     Continuer1.bind("<Button-1>", Aa9)
@@ -336,6 +363,7 @@ def Aa12(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Reve_Salle)
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="Qu’est ce qu’il y a ici ?")
     Continuer1.bind("<Button-1>", Aa13)
@@ -346,6 +374,7 @@ def Aa13(event):
     Continuer1.bind("<Button-1>", Aa14)
 
 def Aa14(event):
+    Decor.config(image=Reve_Tresor)
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="Oh ?")
     Continuer1.bind("<Button-1>", Aa15)
@@ -394,6 +423,7 @@ def Aa23(event):
     pygame.mixer.music.load(BGM_Tension)
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.2)
+    Decor.config(image=Reve_Dragon)
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="Euh…")
     Continuer1.bind("<Button-1>", Aa24)
@@ -434,6 +464,7 @@ def Aa28(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Reve_Dragon)
     NomPerso.config(text="Dragon", fg="red")
     Dialogue.config(text="Grr!")
     Continuer1.bind("<Button-1>", Aa29)
@@ -578,6 +609,7 @@ def Aa42(event):
 
 def Aa43(event):
     pygame.mixer.music.fadeout(400)
+    Decor.config(image=Maison_Reveil)
     NomPerso.config(text="")
     Dialogue.config(text="Je me réveille dans une tout autre pièce.")
     Continuer1.bind("<Button-1>", Aa44)
@@ -619,6 +651,7 @@ def Ab1(event):
     NomPerso.pack(padx=10, pady=10)
     Dialogue.pack(padx=10, pady=10)
     Continuer1.pack(padx=10, pady=10)
+    Decor.config(image=Maison_Reveil)
     Continuer1.config(text=">")
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="...")
@@ -667,6 +700,7 @@ def Ab7(event):
     pygame.mixer.music.load(BGM_Harold)
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.2)
+    Decor.config(image=Maison_Harold)
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="Ah !")
     Continuer1.bind("<Button-1>", Ab8)
@@ -724,6 +758,7 @@ def Ab16(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Maison_Harold)
     Dialogue.config(text="J’ai compris !")
     Continuer1.bind("<Button-1>", Ab17)
 
@@ -778,6 +813,7 @@ def Ab24(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Maison_Harold)
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="Écoutez, je ne pense pas que je suis votre «guerrier», \n vous devez vous tromper.")
     Continuer1.bind("<Button-1>", Ab25)
@@ -873,6 +909,7 @@ def Ab36(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Maison_Harold)
     NomPerso.config(text="Harold", fg="green")
     Dialogue.config(text="Formidable, je vais tout vous expliquer.")
     Continuer1.bind("<Button-1>", Ab37)
@@ -960,6 +997,7 @@ def Ab51(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Maison_Harold)
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="Vraiment ?")
     Continuer1.bind("<Button-1>", Ab52)
@@ -1108,6 +1146,7 @@ def Ac1(event):
     NomPerso.pack(padx=10, pady=10)
     Dialogue.pack(padx=10, pady=10)
     Continuer1.pack(padx=10, pady=10)
+    Decor.config(image=Maison_Reveil)
     Continuer1.config(text=">")
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="Bien, je vais m’en aller alors.")
@@ -1148,6 +1187,7 @@ def Ac6(event):
     pygame.mixer.music.load(BGM_Maison)
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.2)
+    Decor.config(image=Maison_Couloir)
     NomPerso.config(text="")
     Dialogue.config(text="Je sort de la pièce.")
     Continuer1.bind("<Button-1>", Ac7)
@@ -1157,6 +1197,7 @@ def Ac7(event):
     Continuer1.bind("<Button-1>", Ac8)
 
 def Ac8(event):
+    Decor.config(image=Maison_Porte_Entree)
     Dialogue.config(text="Arrivé en bas,\n je trouve la porte de sortie.")
     Continuer1.bind("<Button-1>", Ac9)
 
@@ -1203,6 +1244,7 @@ def Ac15(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Maison_Salon)
     NomPerso.config(text="")
     Dialogue.config(text="Je commence par chercher dans le salon.")
     Continuer1.bind("<Button-1>", Ac16)
@@ -1290,6 +1332,7 @@ def Ac21(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Maison_Cuisine)
     Dialogue.config(text="La cuisine, elle aussi, est bien rangée.")
     Continuer1.bind("<Button-1>", Ac22)
 
@@ -1357,6 +1400,7 @@ def Ac25(event):
     Continuer1.bind("<Button-1>", Ac26)
 
 def Ac26(event):
+    Decor.config(image=Maison_Porte_Chambre)
     Dialogue.config(text="Je monte les escaliers \n et j’arrive devant la porte de sa chambre.")
     Continuer1.bind("<Button-1>", Ac27)
 
@@ -1376,6 +1420,7 @@ def Ac27(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Maison_Porte_Chambre)
     Dialogue.config(text="J’ouvre la porte et…")
     Continuer1.bind("<Button-1>", Ac28)
 
@@ -1504,6 +1549,7 @@ def Ad1(event):
     NomPerso.pack(padx=10, pady=10)
     Dialogue.pack(padx=10, pady=10)
     Continuer1.pack(padx=10, pady=10)
+    Decor.config(image=Chambre_Normal)
     Continuer1.config(text=">")
     NomPerso.config(text="")
     Dialogue.config(text="La chambre d’Harold est assez bien rangée.")
@@ -1538,6 +1584,7 @@ def Ad7(event):
     pygame.mixer.music.load(BGM_Tension)
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.2)
+    Decor.config(image=Chambre_CS)
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="Une chauve-souris ?")
     Continuer1.bind("<Button-1>", Ad8)
@@ -1563,6 +1610,7 @@ def Ad9(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Chambre_CS)
     NomPerso.config(text="")
     Dialogue.config(text="La chauve-souris essaye de m’attaquer.")
     Continuer1.bind("<Button-1>", Ad10)
@@ -1626,6 +1674,7 @@ def Ad15(event):
     pygame.mixer.music.load(BGM_Maison)
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.2)
+    Decor.config(image=Chambre_Normal)
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="C’est bon.")
     Continuer1.bind("<Button-1>", Ad16)
@@ -1658,6 +1707,7 @@ def Ad18(event):
         sauvegarde()
         
     if Pistolet == False:
+        Decor.config(image=PC_Arme_Normal)
         Dialogue.config(text="Il y a toujours l'arme sur la table.")
         Continuer1.config(text="La prendre")
         Continuer2.config(text="La laisser")
@@ -1665,6 +1715,7 @@ def Ad18(event):
         Continuer1.bind("<Button-1>", Ad18a)
         Continuer2.bind("<Button-1>", Ad18b)
     else:
+        Decor.config(image=PC_Normal)
         Dialogue.config(text="Je regarde en détail l’écran.")
         Continuer1.bind("<Button-1>", Ad19)
 
@@ -1674,6 +1725,7 @@ def Ad18a(event):
     global Pistolet
     Pistolet = True
     SE_Objet.play()
+    Decor.config(image=PC_Normal)
     Dialogue.config(text="Je prend le Pistolet et \n je regarde en détail l’écran...")
     Continuer1.config(text=">")
     Continuer2.pack_forget()
@@ -1729,6 +1781,10 @@ def Ad24a(event):
 
 def Ad25a(event):
     SE_RickRoll.play()
+    if Pistolet == True:
+        Decor.config(image=PC_DED)
+    else:
+        Decor.config(image=PC_Arme_DED)
     Dialogue.config(text="Le PC joue une petite musique \n et un écran bleu apparait.")
     Continuer1.bind("<Button-1>", Ad26a)
 
@@ -1774,6 +1830,7 @@ def Ad27(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Chambre_Normal)
     NomPerso.config(text="")
     Dialogue.config(text="N’ayant rien trouvé,\n je décide de fouiller la pièce.")
     Continuer1.bind("<Button-1>", Ad28)
@@ -1784,6 +1841,7 @@ def Ad28(event):
     Continuer1.bind("<Button-1>", Ad29)
 
 def Ad29(event):
+    Decor.config(image=Chambre_Nid)
     NomPerso.config(text="")
     Dialogue.config(text="Il y a un nid dans la chambre.")
     Continuer1.bind("<Button-1>", Ad30)
@@ -1824,6 +1882,7 @@ def Ae1(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Maison_Porte_Chambre)
     if ChambreHaroldOuverte == True:
         NomPerso.config(text="")
         Dialogue.config(text="N’ayant pas d’autre piste, \n je me dirige vers l’entrée.")
@@ -1833,6 +1892,7 @@ def Ae1(event):
     Continuer1.bind("<Button-1>", Ae2)
 
 def Ae2(event):
+    Decor.config(image=Maison_Porte_Entree)
     if ChambreHaroldOuverte == True:
         Dialogue.config(text="Je trouve facilement le tapis.")
     else:
@@ -4757,10 +4817,11 @@ def Cb21a(event):
 
 def Cb22a(event):
     if Echec == True:
-        Dialogue.config(text="Vous allez le lui dire en personne \n qu'il est néfaste.")
+        Dialogue.config(text="Vous allez croupir en prison maintenant !")
+        Continuer1.bind("<Button-1>", FIN_GARDE_CONV)
     else:
         Dialogue.config(text="Je vous laisse.")
-    Continuer1.bind("<Button-1>", Cb23a)
+        Continuer1.bind("<Button-1>", Cb23a)
 
 def Cb23a(event):
     Dialogue.config(text="Allez-y.")
@@ -6317,6 +6378,20 @@ def FIN_GARDE(event):
     FIN_Desc.config(text="FIN \n \n Vous êtes mort, \n la prochaine fois, \n évitez de vexer celui qui a une arme.")
     FIN_Button.bind("<Button-1>", menu)
 
+def FIN_GARDE_CONV(event):
+    pygame.mixer.music.fadeout(400)
+    Decor.pack_forget()
+    NomPerso.pack_forget()
+    Dialogue.pack_forget()
+    Continuer1.pack_forget()
+    Continuer2.pack_forget()
+    Continuer3.pack_forget()
+
+    FIN_Desc.pack(padx=10, pady=10)
+    FIN_Button.pack(padx=10, pady=10)
+    FIN_Desc.config(text="FIN \n \n Vous avez été arreté. \n Votre discours n'a pas du plaire \n à GARDE.")
+    FIN_Button.bind("<Button-1>", menu)
+
 def FIN_Disney(event):
     pygame.mixer.music.fadeout(400)
     Decor.pack_forget()
@@ -6740,7 +6815,7 @@ try:
     ChargerPartie.pack(padx=10, pady=10)
     ChargerPartie.bind("<Button-1>", chargement)
 except IOError :
-    print("")
+    pass
 
 Aide.pack(padx=10, pady=10)
 Aide.bind("<Button-1>", Jeu_Aide)
