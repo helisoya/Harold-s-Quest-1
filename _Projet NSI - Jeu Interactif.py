@@ -1,5 +1,6 @@
 # Projet NSI : Jeu Interactif
 
+print("Chargement...")
 
 # Importations
 import tkinter
@@ -13,7 +14,7 @@ import pygame
 from pygame import mixer
 pygame.init()
 
-
+print("(|  ) modules importés")
 
 # Création de la fenetre
 
@@ -24,9 +25,9 @@ fenetre.iconbitmap(r"icone.ico")
 # Création des Labels !!! Créer ici sinon ca risque de crash !!!
 
 #----Decor/image-----
-Decor = tkinter.Label(fenetre, text="Ceci est l'emplacement des images, \n utilisez votre imagination \n (°-°)\n \|/ \n/|", bg="grey")       #C'est l'endroit ou on met les images
+Decor = tkinter.Label(fenetre, text="Ceci est l'emplacement des images, \n utilisez votre imagination \n (°-°)\n \|/ \n/| \n \n (Enfin, il y a les images maintenant)", bg="grey")       #C'est l'endroit ou on met les images
 
-#------ Decors Chapitre 1-----------
+#------ Decors Chapitre 1 -----------
 
 Reve_Couloir = tkinter.PhotoImage(file="Images\Chapitre1\Reve\Couloir.png")
 Reve_Porte = tkinter.PhotoImage(file="Images\Chapitre1\Reve\Porte.png")
@@ -51,6 +52,55 @@ PC_Arme_DED = tkinter.PhotoImage(file="Images\Chapitre1\Bureau\Bureau_Arme_DED.p
 PC_Normal = tkinter.PhotoImage(file="Images\Chapitre1\Bureau\Bureau_Click.png")
 PC_DED = tkinter.PhotoImage(file="Images\Chapitre1\Bureau\Bureau_DED.png")
 
+#---------- Decors Chapitre 2 ---------------
+
+Cours_Normal = tkinter.PhotoImage(file="Images\Chapitre2\Exterieur\Cours.png")
+Cours_Voiture = tkinter.PhotoImage(file="Images\Chapitre2\Exterieur\Cours_Voiture.png")
+Carte = tkinter.PhotoImage(file="Images\Chapitre2\Exterieur\Carte.png")
+Intersection = tkinter.PhotoImage(file="Images\Chapitre2\Exterieur\Intersection.png")
+
+Disney_Entree = tkinter.PhotoImage(file="Images\Chapitre2\Disney\Entree.png")
+Disney_Entree_Mickey = tkinter.PhotoImage(file="Images\Chapitre2\Disney\Entree_Mickey.png")
+Disney_Allee = tkinter.PhotoImage(file="Images\Chapitre2\Disney\Allée.png")
+Disney_GARDE = tkinter.PhotoImage(file="Images\Chapitre2\Disney\Allée_GARDE.png")
+Disney_Marchand = tkinter.PhotoImage(file="Images\Chapitre2\Disney\Allée_Marchand.png")
+Disney_Fontaine = tkinter.PhotoImage(file="Images\Chapitre2\Disney\Fontaine.png")
+Disney_Fontaine_Mickey = tkinter.PhotoImage(file="Images\Chapitre2\Disney\Fontaine_Mickey.png")
+
+Marais_Liziere = tkinter.PhotoImage(file="Images\Chapitre2\Marais\Lizière.png")
+Marais_Arrive = tkinter.PhotoImage(file="Images\Chapitre2\Marais\Arrivée.png")
+Marais_Fiole = tkinter.PhotoImage(file="Images\Chapitre2\Marais\Fiole.png")
+Marais_FioleRecup = tkinter.PhotoImage(file="Images\Chapitre2\Marais\Fiole_Sans.png")
+Marais_Riviere = tkinter.PhotoImage(file="Images\Chapitre2\Marais\Rivière.png")
+Marais_VieuxSans = tkinter.PhotoImage(file="Images\Chapitre2\Marais\Vieux_Sans.png")
+Marais_Vieux = tkinter.PhotoImage(file="Images\Chapitre2\Marais\Vieux.png")
+Marais_Pont = tkinter.PhotoImage(file="Images\Chapitre2\Marais\Pont.png")
+Marais_Pont_Ogre = tkinter.PhotoImage(file="Images\Chapitre2\Marais\Pont_Ogre.png")
+
+
+
+#---------- Decors Chapitre 3 ---------------
+
+Chateau_Exterieur = tkinter.PhotoImage(file="Images\Chapitre3\Exterieur\Chateau.png")
+Chateau_Chemin = tkinter.PhotoImage(file="Images\Chapitre3\Exterieur\Chemin.png")
+Chateau_Entree = tkinter.PhotoImage(file="Images\Chapitre3\Exterieur\Entree.png")
+Chateau_Entree_GARDE = tkinter.PhotoImage(file="Images\Chapitre3\Exterieur\Entree_GARDE.png")
+
+Chateau_Couloir = tkinter.PhotoImage(file="Images\Chapitre3\Interieur\Couloir.png")
+Chateau_Couloir_GARDE = tkinter.PhotoImage(file="Images\Chapitre3\Interieur\Couloir_GARDE.png")
+Chateau_Interieur = tkinter.PhotoImage(file="Images\Chapitre3\Interieur\Interieur.png")
+Chateau_SalleBonus = tkinter.PhotoImage(file="Images\Chapitre3\Interieur\SalleBonus.png")
+Chateau_Trone = tkinter.PhotoImage(file="Images\Chapitre3\Interieur\Trone.png")
+Chateau_Trone_Dragon = tkinter.PhotoImage(file="Images\Chapitre3\Interieur\Trone_Dragon.png")
+
+Cours_Harold = tkinter.PhotoImage(file="Images\Chapitre3\FINS\Cours_Harold.png")
+Plaine = tkinter.PhotoImage(file="Images\Chapitre3\FINS\Plaine.png")
+Route_Normal = tkinter.PhotoImage(file="Images\Chapitre3\FINS\Route.png")
+Route_Voiture = tkinter.PhotoImage(file="Images\Chapitre3\FINS\Route_Voiture.png")
+Route_Police = tkinter.PhotoImage(file="Images\Chapitre3\FINS\Route_Police.png")
+
+
+print("(|| ) Images Importés")
 
 #----Perso-----
 NomPerso = tkinter.Label(fenetre, text="")   # C'est l'endroit ou on met les noms
@@ -241,6 +291,9 @@ SE_Objet = pygame.mixer.Sound("Musique\SE\Objet.wav")
 
 #-----------------------------
 
+print("(|||) Musiques Importées")
+print()
+print("Chargement terminé")
 
 
 # Affichage (Il se fait par fonction)
@@ -1995,6 +2048,7 @@ def Ba1(event):
     NomPerso.pack(padx=10, pady=10)
     Dialogue.pack(padx=10, pady=10)
     Continuer1.pack(padx=10, pady=10)
+    Decor.config(image=Cours_Normal)
     Continuer1.config(text=">")
     NomPerso.config(text="")
     Dialogue.config(text="...")
@@ -2055,6 +2109,7 @@ def Ba11(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Cours_Voiture)
     NomPerso.config(text="")
     Dialogue.config(text="Mon regard se pose sur une voiture.")
     Continuer1.bind("<Button-1>", Ba12)
@@ -2083,6 +2138,7 @@ def Ba16(event):
     Continuer1.bind("<Button-1>", Ba17)
 
 def Ba17(event):
+    Decor.config(image=Cours_Normal)
     NomPerso.config(text="")
     Dialogue.config(text="Je m'éloigne de la voiture pour me diriger \n vers la sortie de la propriété d'Harold.")
     Continuer1.bind("<Button-1>", Ba18)
@@ -2103,6 +2159,7 @@ def Ba18(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Carte)
     Dialogue.config(text="Une fois sortis, je regarde autour de moi...")
     Continuer1.bind("<Button-1>", Ba19)
 
@@ -2266,6 +2323,7 @@ def Ba28(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Intersection)
     Dialogue.config(text="Après 30 minutes de marche, \n j'arrive à une intersection.")
     Continuer1.bind("<Button-1>", Ba29)
 
@@ -2303,6 +2361,7 @@ def Ba32b(event):
 #----------- Chemin Normal -----------
 
 def Ba32c(event):
+    Decor.config(image=Intersection)
     Dialogue.config(text="Je dois donc choisir entre la gauche et la droite.")
     Continuer1.bind("<Button-1>", Ba33)
 
@@ -2368,6 +2427,7 @@ def Bb1(event):
     NomPerso.pack(padx=10, pady=10)
     Dialogue.pack(padx=10, pady=10)
     Continuer1.pack(padx=10, pady=10)
+    Decor.config(image=Disney_Entree)
     Continuer1.config(text=">")
     NomPerso.config(text="")
     Dialogue.config(text="J'arrive à l'entrée du chateau.")
@@ -2419,7 +2479,7 @@ def Bb6(event):
 
 #----------------------------------------
 #----------- Sous Partie 2 --------------
-#-------------- VIGILE ------------------
+#-------------- MICKEY ------------------
 #----------------------------------------
 
 def Bb7(event):
@@ -2433,6 +2493,7 @@ def Bb7(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Disney_Entree_Mickey)
     NomPerso.config(text=nom, fg="blue")
     if LockDisney == True:
         Dialogue.config(text="Bonjour, je sais que votre seigneur se cache ici, \n et je compte le terrasser.")
@@ -2513,6 +2574,7 @@ def Bb17(event):
     pygame.mixer.music.load(BGM_DisneyLand)
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.2)
+    Decor.config(image=Disney_Allee)
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="...")
     Continuer1.bind("<Button-1>", Bb18)
@@ -2578,6 +2640,7 @@ def Bb27(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Disney_Allee)
     Dialogue.config(text="Après quelques metres,  \n j'aperçois un étrange marchand.")
     Continuer1.bind("<Button-1>", Bb28)
 
@@ -2614,6 +2677,7 @@ def Bb30(event):
     Continuer1.bind("<Button-1>", Bb31)
 
 def Bb31(event):
+    Decor.config(image=Disney_Marchand)
     NomPerso.config(text=nom, fg="blue")
     if LockDisney == True:
         Dialogue.config(text="Bonjour paysan, qu'avez-vous à vendre ?")
@@ -2861,6 +2925,7 @@ def Bb51(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Disney_Allee)
     NomPerso.config(text="")
     Dialogue.config(text="Je continue ensuite ma route vers le chateau.")
     Continuer1.bind("<Button-1>", Bb52)
@@ -2870,6 +2935,7 @@ def Bb52(event):
     Continuer1.bind("<Button-1>", Bb53)
 
 def Bb53(event):
+    Decor.config(image=Disney_GARDE)
     Dialogue.config(text="Je pourrais demander des informations, \n j'aperçois un homme qui pourrais savoir des choses.")
     Continuer1.bind("<Button-1>", Bb54)
 
@@ -2976,6 +3042,7 @@ def Bb65a(event):
     Continuer1.bind("<Button-1>", Bb66a)
 
 def Bb66a(event):
+    Decor.config(image=Disney_Allee)
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="...")
     Continuer1.bind("<Button-1>", Bb67a)
@@ -3035,11 +3102,13 @@ def Bb69(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Disney_Allee)
     NomPerso.config(text="")
     Dialogue.config(text="Je me retrouve une fois de plus \n en direction du chateau.")
     Continuer1.bind("<Button-1>", Bb70)
 
 def Bb70(event):
+    Decor.config(image=Disney_Fontaine)
     Dialogue.config(text="Après quelque temps, \n je me retrouve en face du chateau.")
     Continuer1.bind("<Button-1>", Bb71)
 
@@ -3131,6 +3200,7 @@ def Bb80(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Disney_Fontaine)
     NomPerso.config(text="")
     Dialogue.config(text="Je me dirige alors vers le chateau.")
     Continuer1.bind("<Button-1>", Bb81)
@@ -3140,6 +3210,7 @@ def Bb81(event):
     Continuer1.bind("<Button-1>", Bb82)
 
 def Bb82(event):
+    Decor.config(image=Disney_Fontaine_Mickey)
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="L'homme de l'entrée !")
     Continuer1.bind("<Button-1>", Bb83)
@@ -3251,6 +3322,7 @@ def Bc1(event):
     NomPerso.pack(padx=10, pady=10)
     Dialogue.pack(padx=10, pady=10)
     Continuer1.pack(padx=10, pady=10)
+    Decor.config(image=Marais_Liziere)
     Continuer1.config(text=">")
     NomPerso.config(text="")
     Dialogue.config(text="J'arrive à la bordure de la forêt.")
@@ -3288,6 +3360,7 @@ def Bc3(event):
     Continuer1.bind("<Button-1>", Bc4)
 
 def Bc4(event):
+    Decor.config(image=Marais_Arrive)
     if LockMarais == True:
         Dialogue.config(text="Je doit faire attention dans cette forêt.")
     else:
@@ -3307,6 +3380,7 @@ def Bc6(event):
     Continuer1.bind("<Button-1>", Bc7)
 
 def Bc7(event):
+    Decor.config(image=Chateau_Exterieur)
     NomPerso.config(text="")
     Dialogue.config(text="Au loin, dans les montagnes , \n je peut apercevoir un chateau.")
     Continuer1.bind("<Button-1>", Bc8)
@@ -3324,6 +3398,7 @@ def Bc9(event):
     Continuer1.bind("<Button-1>", Bc10)
 
 def Bc10(event):
+    Decor.config(image=Marais_Arrive)
     NomPerso.config(text="")
     Dialogue.config(text="Je m'enfonce donc plus profondément dans la forêt.")
     Continuer1.bind("<Button-1>", Bc11)
@@ -3348,6 +3423,7 @@ def Bc11(event):
     pygame.mixer.music.load(BGM_Marais)
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.2)
+    Decor.config(image=Marais_Arrive)
     Dialogue.config(text="Après quelque temps, \n j'arrive vers un marais.")
     Continuer1.bind("<Button-1>", Bc12)
 
@@ -3419,6 +3495,7 @@ def Bc21(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Marais_Arrive)
     Dialogue.config(text="Je doit faire très attention.")
     Continuer1.config(text="Avancer (Agilité 2)")
     Continuer1.bind("<Button-1>", Bc22)
@@ -3486,6 +3563,7 @@ def Bc28(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Marais_Fiole)
     Dialogue.config(text="Après quelque temps, \n j'arrive vers un rocher.")
     Continuer1.bind("<Button-1>", Bc29)
 
@@ -3518,6 +3596,7 @@ def Bc33a(event):
     Continuer1.bind("<Button-1>", Bc34a)
 
 def Bc34a(event):
+    Decor.config(image=Marais_FioleRecup)
     Dialogue.config(text="...et je prend la fiole.")
     Continuer1.bind("<Button-1>", Bc35a)
 
@@ -3577,6 +3656,7 @@ def Bc40(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Marais_Riviere)
     Dialogue.config(text="En route, j'arrive vers un ruisseau.")
     Continuer1.bind("<Button-1>", Bc41)
 
@@ -3682,6 +3762,7 @@ def Bc49(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Marais_VieuxSans)
     Dialogue.config(text="Après quelque minutes, \n j'arrive enfin vers la sortie du marais.")
     Continuer1.bind("<Button-1>", Bc50)
 
@@ -3714,6 +3795,7 @@ def Bc54(event):
     Continuer1.bind("<Button-1>", Bc55)
 
 def Bc55(event):
+    Decor.config(image=Marais_Vieux)
     NomPerso.config(text="Cadavre Vivant", fg="tan")
     Dialogue.config(text="Hein ?")
     Continuer1.bind("<Button-1>", Bc56)
@@ -3837,6 +3919,7 @@ def Bc65(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Marais_Pont)
     NomPerso.config(text="")
     Dialogue.config(text="Après quelque temps, \n j'arrive au bout du marais.")
     Continuer1.bind("<Button-1>", Bc66)
@@ -3855,6 +3938,7 @@ def Bc67(event):
     Continuer1.bind("<Button-1>", Bc68)
 
 def Bc68(event):
+    Decor.config(image=Marais_Pont_Ogre)
     NomPerso.config(text="")
     Dialogue.config(text="Je me retourne \n pour voir le terrible monstre.")
     Continuer1.bind("<Button-1>", Bc69)
@@ -3930,6 +4014,7 @@ def Bc78(event):
 
 def Bc79(event):
     pygame.mixer.music.fadeout(400)
+    Decor.config(image=Marais_Pont)
     NomPerso.config(text="")
     Dialogue.config(text="Le monstre tombe avec le pont dans la rivière.")
     Continuer1.bind("<Button-1>", Bc80)
@@ -4006,6 +4091,7 @@ def Ca1(event):
     NomPerso.pack(padx=10, pady=10)
     Dialogue.pack(padx=10, pady=10)
     Continuer1.pack(padx=10, pady=10)
+    Decor.config(image=Chateau_Chemin)
     Continuer1.config(text=">")
     NomPerso.config(text="")
     Dialogue.config(text="Après une heure de marche, \n j'arrive à mon but.")
@@ -4013,10 +4099,12 @@ def Ca1(event):
     LevelUp(event)
 
 def Ca2(event):
+    Decor.config(image=Chateau_Exterieur)
     Dialogue.config(text="Au sommet de la montagne se trouve \n le repaire du Dragon.")
     Continuer1.bind("<Button-1>", Ca3)
 
 def Ca3(event):
+    Decor.config(image=Chateau_Chemin)
     Dialogue.config(text="Je commence donc à gravir la montagne.")
     Continuer1.bind("<Button-1>", Ca4)
 
@@ -4106,6 +4194,7 @@ def Ca13(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Chateau_Entree)
     Dialogue.config(text="Après quelque temps, \n j'arrive à l'entrée du chateau.")
     Continuer1.bind("<Button-1>", Ca14)
 
@@ -4220,6 +4309,7 @@ def Ca25(event):
     Continuer1.bind("<Button-1>", Ca26)
 
 def Ca26(event):
+    Decor.config(image=Chateau_Entree_GARDE)
     NomPerso.config(text="")
     Dialogue.config(text="Un homme montre sa tête \n du haut des remparts.")
     Continuer1.bind("<Button-1>", Ca27)
@@ -4266,6 +4356,7 @@ def Ca30(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Chateau_Entree_GARDE)
     Dialogue.config(text="Que venez-vous faire ici ?")
     Continuer1.bind("<Button-1>", Ca31)
 
@@ -4529,6 +4620,7 @@ def Ca52e(event):
 
 def Ca53(event):
     pygame.mixer.music.fadeout(400)
+    Decor.config(image=Chateau_Entree)
     NomPerso.config(text="")
     Dialogue.config(text="Je pénètre donc dans le château.")
     Continuer1.bind("<Button-1>", Cb1)
@@ -4568,6 +4660,7 @@ def Cb1(event):
     NomPerso.pack(padx=10, pady=10)
     Dialogue.pack(padx=10, pady=10)
     Continuer1.pack(padx=10, pady=10)
+    Decor.config(image=Chateau_Interieur)
     Continuer1.config(text=">")
     NomPerso.config(text="")
     Dialogue.config(text="Le château est un immense \n labyrinthe à l'interieur.")
@@ -4594,6 +4687,7 @@ def Cb5(event):
     Continuer1.bind("<Button-1>", Cb6)
 
 def Cb6(event):
+    Decor.config(image=Chateau_Interieur)
     NomPerso.config(text="")
     Dialogue.config(text="Devant moi se dresse 3 portes.")
     Continuer1.bind("<Button-1>", Cb7)
@@ -4664,6 +4758,7 @@ def Cb7c(event):
 def Cb8a(event):
     global bonusobtenu
     bonusobtenu = True
+    Decor.config(image=Chateau_SalleBonus)
     Continuer1.config(text=">")
     Continuer2.pack_forget()
     Continuer3.pack_forget()
@@ -4696,6 +4791,7 @@ def Cb8f(event):
 
 
 def Cb8(event):
+    Decor.config(image=Chateau_Couloir)
     Continuer1.config(text=">")
     Continuer2.pack_forget()
     Continuer3.pack_forget()
@@ -4727,6 +4823,7 @@ def Cb10(event):
     pygame.mixer.music.load(BGM_GARDE)
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.2)
+    Decor.config(image=Chateau_Couloir)
     NomPerso.config(text="???", fg="burlywood")
     Dialogue.config(text="PAS SI VITE !")
     Continuer1.bind("<Button-1>", Cb10a)
@@ -4742,6 +4839,7 @@ def Cb11(event):
     Continuer1.bind("<Button-1>", Cb12)
 
 def Cb12(event):
+    Decor.config(image=Chateau_Couloir_GARDE)
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="Vous ?")
     Continuer1.bind("<Button-1>", Cb13)
@@ -4909,6 +5007,7 @@ def Cb25(event):
     pygame.mixer.music.load(BGM_Chateau)
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.2)
+    Decor.config(image=Chateau_Couloir)
     NomPerso.config(text="")
     Dialogue.config(text="Je continue alors ma route \n dans le couloir.")
     Continuer1.bind("<Button-1>", Cb26)
@@ -4963,6 +5062,7 @@ def Cc1(event):
     NomPerso.pack(padx=10, pady=10)
     Dialogue.pack(padx=10, pady=10)
     Continuer1.pack(padx=10, pady=10)
+    Decor.config(image=Chateau_Trone)
     Continuer1.config(text=">")
     NomPerso.config(text="")
     Dialogue.config(text="La salle est immense.")
@@ -4978,6 +5078,7 @@ def Cc3(event):
 
 def Cc4(event):
     SE_Dragon_Cri.play()
+    Decor.config(image=Chateau_Trone_Dragon)
     NomPerso.config(text="Dragon", fg="red")
     Dialogue.config(text="Tient donc.")
     Continuer1.bind("<Button-1>", Cc5)
@@ -5451,6 +5552,7 @@ def Cc25(event):
         Dialogue.pack(padx=10, pady=10)
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
+    Decor.config(image=Chateau_Trone)
     NomPerso.config(text="")
     Dialogue.config(text="La confrontation gagnée, \n je cherche les clefs.")
     Continuer1.bind("<Button-1>", Cc26)
@@ -5508,6 +5610,7 @@ def Cd1(event):
     NomPerso.pack(padx=10, pady=10)
     Dialogue.pack(padx=10, pady=10)
     Continuer1.pack(padx=10, pady=10)
+    Decor.config(image=Cours_Normal)
     Continuer1.config(text=">")
     NomPerso.config(text="")
     if DragonCharme == True:
@@ -5602,6 +5705,7 @@ def Ce1(event):
     pygame.mixer.music.load(BGM_Fin)
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.2)
+    Decor.config(image=Cours_Normal)
     Dialogue.config(text="Arrivé, je sonne.")
     Continuer1.bind("<Button-1>", Ce2)
 
@@ -5617,6 +5721,7 @@ def Ce3(event):
     Continuer1.bind("<Button-1>", Ce4)
 
 def Ce4(event):
+    Decor.config(image=Cours_Harold)
     NomPerso.config(text="Harold", fg="green")
     Dialogue.config(text="Guerrier ? C'est bien vous ?")
     Continuer1.bind("<Button-1>", Ce5)
@@ -5741,6 +5846,7 @@ def Ce27(event):
     Continuer1.bind("<Button-1>", Ce28)
 
 def Ce28(event):
+    Decor.config(image=Plaine)
     Dialogue.config(text="...je me reveille dans une clairière.")
     Continuer1.bind("<Button-1>", Ce29)
 
@@ -5770,6 +5876,7 @@ def Cf1(event):
     pygame.mixer.music.load(BGM_Fuite)
     pygame.mixer.music.play(-1)
     pygame.mixer.music.set_volume(0.15)
+    Decor.config(image=Cours_Voiture)
     Dialogue.config(text="Arrivé, j'ouvre la voiture.")
     Continuer1.bind("<Button-1>", Cf2)
 
@@ -5779,6 +5886,7 @@ def Cf2(event):
     Continuer1.bind("<Button-1>", Cf3)
 
 def Cf3(event):
+    Decor.config(image=Cours_Harold)
     NomPerso.config(text="Harold", fg="green")
     Dialogue.config(text="Qu'est ce qu'il se passe ici ?")
     Continuer1.bind("<Button-1>", Cf4)
@@ -5803,6 +5911,7 @@ def Cf6(event):
     Continuer1.bind("<Button-1>", Cf7)
 
 def Cf7(event):
+    Decor.config(image=Route_Normal)
     NomPerso.config(text=nom, fg="blue")
     Dialogue.config(text="...")
     Continuer1.bind("<Button-1>", Cf8)
@@ -5818,6 +5927,7 @@ def Cf9(event):
     Continuer1.bind("<Button-1>", Cf10)
 
 def Cf10(event):
+    Decor.config(image=Route_Voiture)
     NomPerso.config(text="")
     Dialogue.config(text="La police me poursuit.")
     Continuer1.bind("<Button-1>", Cf11)
@@ -5874,6 +5984,7 @@ def Cf18(event):
     Continuer1.bind("<Button-1>", Cf19)
 
 def Cf19(event):
+    Decor.config(image=Route_Police)
     NomPerso.config(text="Policier", fg="tan")
     Dialogue.config(text="On ne bouge plus !")
     Continuer1.bind("<Button-1>", Cf20)
@@ -5929,6 +6040,7 @@ def Cf28(event):
     Continuer1.bind("<Button-1>", Cf29)
 
 def Cf29(event):
+    Decor.config(image=Route_Normal)
     NomPerso.config(text="")
     Dialogue.config(text="Les policiers s'en vont, \n me laissant libre.")
     Continuer1.bind("<Button-1>", Cf30)
@@ -5947,6 +6059,8 @@ def Cf30(event):
 
 def Porterandom():
     global portedragon, portebonus
+    portebonus = 0
+    portedragon = 0
     portedragon = random.randint(1,3)
     if bonusobtenu == False:
         probabonus = random.randint(1,100)
