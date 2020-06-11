@@ -1,9 +1,34 @@
 # Projet NSI : Jeu Interactif
 
-print("Chargement...")
+import tkinter
+
+# Création de la fenetre
+
+fenetre = tkinter.Tk()
+fenetre.title("Projet NSI : Jeu Interactif")
+fenetre.iconbitmap(r"icone.ico")
+
+
+#------------ Chargement -------------
+
+# Labels
+
+Load1 = tkinter.PhotoImage(file="Images\Load1.png")
+Load2 = tkinter.PhotoImage(file="Images\Load2.png")
+Load3 = tkinter.PhotoImage(file="Images\Load3.png")
+Load4 = tkinter.PhotoImage(file="Images\Load4.png")
+
+Load_mess = tkinter.Label(fenetre, text="Chargement... \n Modules")
+Load_img = tkinter.Label(fenetre, image=Load1)
+
+
+Load_mess.pack(padx=5,pady=5)
+Load_img.pack(padx=5,pady=5)
+Load_mess.update()
+Load_img.update()
 
 # Importations
-import tkinter
+
 import time
 from math import *
 import random
@@ -14,18 +39,12 @@ import pygame
 from pygame import mixer
 pygame.init()
 
-print("(|  ) modules importés")
+Load_mess.config(text="Chargement... \n Images")
+Load_img.config(image=Load2)
+Load_mess.update()
+Load_img.update()
 
-# Création de la fenetre
-
-fenetre = tkinter.Tk()
-fenetre.title("Projet NSI : Jeu Interactif")
-fenetre.iconbitmap(r"icone.ico")
-
-# Création des Labels !!! Créer ici sinon ca risque de crash !!!
-
-#----Decor/image-----
-Decor = tkinter.Label(fenetre, text="Ceci est l'emplacement des images, \n utilisez votre imagination \n (°-°)\n \|/ \n/| \n \n (Enfin, il y a les images maintenant)", bg="grey")       #C'est l'endroit ou on met les images
+# Images
 
 #------ Decors Chapitre 1 -----------
 
@@ -100,7 +119,70 @@ Route_Voiture = tkinter.PhotoImage(file="Images\Chapitre3\FINS\Route_Voiture.png
 Route_Police = tkinter.PhotoImage(file="Images\Chapitre3\FINS\Route_Police.png")
 
 
-print("(|| ) Images Importés")
+Load_mess.config(text="Chargement... \n Sons")
+Load_img.config(image=Load3)
+Load_mess.update()
+Load_img.update()
+
+# Sons
+
+#BGM 
+
+BGM_Menu = ("Musique\BGM\Menu.mp3")
+
+BGM_Reve = ("Musique\BGM\Reve.mp3")
+BGM_Harold = ("Musique\BGM\Harold.mp3")
+BGM_Maison = ("Musique\BGM\Maison.mp3")
+BGM_Tension = ("Musique\BGM\Tension.mp3")
+
+BGM_Exterieur = ("Musique\BGM\Exterieur.mp3")
+BGM_Marais = ("Musique\BGM\Marais.mp3")
+BGM_Ogre = ("Musique\BGM\Ogre.mp3")
+BGM_DisneyLand = ("Musique\BGM\DisneyLand.mp3")
+
+BGM_GARDE = ("Musique\BGM\GARDE.mp3")
+BGM_Chateau = ("Musique\BGM\Chateau.mp3")
+BGM_Dragon = ("Musique\BGM\Dragon.mp3")
+BGM_Fin = ("Musique\BGM\Fin.mp3")
+BGM_Fuite = ("Musique\BGM\Fuite.mp3")
+
+
+#SE
+
+SE_Chute = pygame.mixer.Sound("Musique\SE\Chute.wav")
+SE_Dragon_Cri = pygame.mixer.Sound("Musique\SE\Dragon_Cri.wav")
+SE_Dragon_Feu = pygame.mixer.Sound("Musique\SE\Dragon_Feu.wav")
+SE_Epee = pygame.mixer.Sound("Musique\SE\Epee.wav")
+SE_Verre = pygame.mixer.Sound("Musique\SE\Verre.wav")
+SE_Flute = pygame.mixer.Sound("Musique\SE\Flute.wav")
+SE_Flute_EarRape = pygame.mixer.Sound("Musique\SE\Flute_EarRape.wav")
+SE_Frappe = pygame.mixer.Sound("Musique\SE\Frappe.wav")
+SE_LevelUp = pygame.mixer.Sound("Musique\SE\LevelUp.wav")
+SE_Pistolet = pygame.mixer.Sound("Musique\SE\Pistolet.wav")
+SE_Pistolet_Degainage = pygame.mixer.Sound("Musique\SE\Pistolet_Degainage.wav")
+SE_Porte = pygame.mixer.Sound("Musique\SE\Porte.wav")
+SE_Porte_Chateau = pygame.mixer.Sound("Musique\SE\Porte_Chateau.wav")
+SE_Saut = pygame.mixer.Sound("Musique\SE\Saut.wav")
+SE_Sonnerie = pygame.mixer.Sound("Musique\SE\Sonnerie.wav")
+SE_Voiture = pygame.mixer.Sound("Musique\SE\Voiture.wav")
+SE_RickRoll = pygame.mixer.Sound("Musique\SE\RickRoll.wav")
+SE_Objet = pygame.mixer.Sound("Musique\SE\Objet.wav")
+
+
+Load_mess.config(text="Chargement Terminé")
+Load_img.config(image=Load4)
+Load_mess.update()
+Load_img.update()
+
+
+
+# Création des Labels !!! Créer ici sinon ca risque de crash !!!
+
+#----Decor/image-----
+Decor = tkinter.Label(fenetre, text="Ceci est l'emplacement des images, \n utilisez votre imagination \n (°-°)\n \|/ \n/| \n \n (Enfin, il y a les images maintenant)", bg="grey")       #C'est l'endroit ou on met les images
+
+Menu_Image = tkinter.PhotoImage(file="Images\Menu.png")
+
 
 #----Perso-----
 NomPerso = tkinter.Label(fenetre, text="")   # C'est l'endroit ou on met les noms
@@ -138,7 +220,7 @@ Continuer2 = tkinter.Button(fenetre, text=">", bg="grey")
 Continuer3 = tkinter.Button(fenetre, text=">", bg="grey")
 
 #-----Menu------
-NomJeu = tkinter.Label(fenetre, text="Ceci est le projet NSI portant sur un jeu interactif. \n \n Cliquez sur commencer")
+NomJeu = tkinter.Label(fenetre,image=Menu_Image)
 Commencer = tkinter.Button(fenetre, text="Commencer", bg="grey")
 ChargerPartie = tkinter.Button(fenetre, text="Continuer", bg="grey")
 Aide = tkinter.Button(fenetre, text="Aide", bg="grey")
@@ -184,7 +266,7 @@ Chap3_4 = tkinter.Button(fenetre, text="Moment Critique", bg="grey")
 # Potion magique - (TROUVER LA SALLE SECRETE AU CHAPITRE 3) - 1 lv
 # Pacifier le Dragon - (BATTRE LE DRAGON AU CHAPITRE 3) - 1 lv
 
-# LV max = 9 / soit 4 points suplémentaires
+# LV max = 9 / soit 9 points suplémentaires (27 points au total)
 #Points de base = 18
 
 
@@ -245,55 +327,7 @@ Carte_Monopoly = False
 Loaded = False
 
 
-#------------ Sons -----------
 
-#BGM 
-
-BGM_Menu = ("Musique\BGM\Menu.mp3")
-
-BGM_Reve = ("Musique\BGM\Reve.mp3")
-BGM_Harold = ("Musique\BGM\Harold.mp3")
-BGM_Maison = ("Musique\BGM\Maison.mp3")
-BGM_Tension = ("Musique\BGM\Tension.mp3")
-
-BGM_Exterieur = ("Musique\BGM\Exterieur.mp3")
-BGM_Marais = ("Musique\BGM\Marais.mp3")
-BGM_Ogre = ("Musique\BGM\Ogre.mp3")
-BGM_DisneyLand = ("Musique\BGM\DisneyLand.mp3")
-
-BGM_GARDE = ("Musique\BGM\GARDE.mp3")
-BGM_Chateau = ("Musique\BGM\Chateau.mp3")
-BGM_Dragon = ("Musique\BGM\Dragon.mp3")
-BGM_Fin = ("Musique\BGM\Fin.mp3")
-BGM_Fuite = ("Musique\BGM\Fuite.mp3")
-
-
-#SE
-
-SE_Chute = pygame.mixer.Sound("Musique\SE\Chute.wav")
-SE_Dragon_Cri = pygame.mixer.Sound("Musique\SE\Dragon_Cri.wav")
-SE_Dragon_Feu = pygame.mixer.Sound("Musique\SE\Dragon_Feu.wav")
-SE_Epee = pygame.mixer.Sound("Musique\SE\Epee.wav")
-SE_Verre = pygame.mixer.Sound("Musique\SE\Verre.wav")
-SE_Flute = pygame.mixer.Sound("Musique\SE\Flute.wav")
-SE_Flute_EarRape = pygame.mixer.Sound("Musique\SE\Flute_EarRape.wav")
-SE_Frappe = pygame.mixer.Sound("Musique\SE\Frappe.wav")
-SE_LevelUp = pygame.mixer.Sound("Musique\SE\LevelUp.wav")
-SE_Pistolet = pygame.mixer.Sound("Musique\SE\Pistolet.wav")
-SE_Pistolet_Degainage = pygame.mixer.Sound("Musique\SE\Pistolet_Degainage.wav")
-SE_Porte = pygame.mixer.Sound("Musique\SE\Porte.wav")
-SE_Porte_Chateau = pygame.mixer.Sound("Musique\SE\Porte_Chateau.wav")
-SE_Saut = pygame.mixer.Sound("Musique\SE\Saut.wav")
-SE_Sonnerie = pygame.mixer.Sound("Musique\SE\Sonnerie.wav")
-SE_Voiture = pygame.mixer.Sound("Musique\SE\Voiture.wav")
-SE_RickRoll = pygame.mixer.Sound("Musique\SE\RickRoll.wav")
-SE_Objet = pygame.mixer.Sound("Musique\SE\Objet.wav")
-
-#-----------------------------
-
-print("(|||) Musiques Importées")
-print()
-print("Chargement terminé")
 
 
 # Affichage (Il se fait par fonction)
@@ -4876,7 +4910,7 @@ def Cb17(event):
     Continuer2.pack(padx=10, pady=10)
     Continuer3.pack(padx=10, pady=10)
     Continuer1.config(text="Le convaincre (Charisme 5)")
-    Continuer2.config(text="Reflexes Ninja (Force 6)")
+    Continuer2.config(text="Reflexes Ninja (Agilité 6)")
     Continuer3.config(text="Être sincère")
     Continuer1.bind("<Button-1>", Cb18a)
     Continuer2.bind("<Button-1>", Cb18b)
@@ -4936,7 +4970,7 @@ def Cb24a(event):
 
 def Cb18b(event):
     global Echec
-    if force < 6:
+    if agilite < 6:
         Echec = True
     else:
         Echec = False
@@ -5542,6 +5576,7 @@ def Dragon_flute7(event):
 
 
 def Cc25(event):
+    pygame.mixer.music.fadeout(400)
     global Checkpoint,Checkpoint_mus, Loaded
     Checkpoint = "Cc25"
     Checkpoint_mus = "Rien"
@@ -5700,6 +5735,10 @@ def Ce1(event):
     Checkpoint_mus = BGM_Fin
     if Loaded == True:
         Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
     sauvegarde()
     pygame.mixer.music.fadeout(400)
     pygame.mixer.music.load(BGM_Fin)
@@ -5870,6 +5909,10 @@ def Cf1(event):
     Checkpoint_mus = BGM_Fuite
     if Loaded == True:
         Loaded = False
+        Decor.pack(padx=10, pady=10)
+        NomPerso.pack(padx=10, pady=10)
+        Dialogue.pack(padx=10, pady=10)
+        Continuer1.pack(padx=10, pady=10)
         pygame.mixer.music.set_volume(0.15)
     sauvegarde()
     pygame.mixer.music.fadeout(400)
@@ -6764,7 +6807,15 @@ def INVENTAIRE(event):
     def Inv_Stats(event):
         inv_label.grid_forget()
         inv_stats_bouton.unbind("<Button-1>")
-        
+
+
+        inv_nom.config(text="Nom : " + nom)
+        inv_niveau.config(text="Niveau : " + str(niveau))
+        inv_force.config(text="Force : " + str(force))
+        inv_agilite.config(text="Agilité : " + str(agilite))
+        inv_intelligence.config(text="Intelligence : " + str(intelligence))
+        inv_Charisme.config(text="Charisme : " + str(charisme))
+            
         inv_nom.grid(column=2,row=1)
         inv_niveau.grid(column=2,row=2)
         inv_force.grid(column=2,row=3)
@@ -6784,6 +6835,21 @@ def INVENTAIRE(event):
         inv_Charisme.grid_forget()
         inv_inv_bouton.unbind("<Button-1>")
 
+        inv_text = "\n Vous avez :"
+        if Epee == True:
+            inv_text = inv_text + "\n -Une Epée"
+        if Pistolet == True:
+            inv_text = inv_text + "\n -Un Pistolet"
+        if Flute == True:
+            inv_text = inv_text + "\n -Une Flute"
+        if Partitions == True:
+            inv_text = inv_text + "\n -Des Partitions"
+        if Carte_Monopoly == True:
+            inv_text = inv_text + "\n -Une Carte Monopoly"
+        if Carte_Monopoly == False and Partitions == False and Flute == False and Pistolet == False and Epee == False:
+            inv_text = inv_text + "\n Rien =)"
+        inv_label.config(text=inv_text)
+        
         inv_label.grid(column=2,row=1)
         inv_stats_bouton.bind("<Button-1>", Inv_Stats)
 
@@ -6914,6 +6980,9 @@ def Jeu_Aide(event):
 #--------------------------------------
 
 #----Menu Principal(doit etre en dernier)------
+Load_mess.pack_forget()
+Load_img.pack_forget()
+
 pygame.mixer.music.load(BGM_Menu)
 pygame.mixer.music.play(-1)
 pygame.mixer.music.set_volume(0.2)
