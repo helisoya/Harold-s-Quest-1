@@ -5,7 +5,7 @@ import tkinter
 # Création de la fenetre
 
 fenetre = tkinter.Tk()
-fenetre.title("Projet NSI : Jeu Interactif")
+fenetre.title("Harold's Quest")
 fenetre.iconbitmap(r"icone.ico")
 
 
@@ -80,6 +80,7 @@ Intersection = tkinter.PhotoImage(file="Images\Chapitre2\Exterieur\Intersection.
 
 Disney_Entree = tkinter.PhotoImage(file="Images\Chapitre2\Disney\Entree.png")
 Disney_Entree_Mickey = tkinter.PhotoImage(file="Images\Chapitre2\Disney\Entree_Mickey.png")
+Disney_Entree_Arme = tkinter.PhotoImage(file="Images\Chapitre2\Disney\Entree_Arme.png")
 Disney_Allee = tkinter.PhotoImage(file="Images\Chapitre2\Disney\Allée.png")
 Disney_GARDE = tkinter.PhotoImage(file="Images\Chapitre2\Disney\Allée_GARDE.png")
 Disney_Marchand = tkinter.PhotoImage(file="Images\Chapitre2\Disney\Allée_Marchand.png")
@@ -306,10 +307,10 @@ PassMarais = False
 PassDisney = False
 GARDE_Sympa = 0
 GARDE_Hostille = 0
+Nb_Porte = 0
 portedragon = 0
 portebonus = 0
 bonusobtenu = False
-
 DragonTue = False
 DragonCharme = False
 DragonBlaze = False
@@ -338,7 +339,7 @@ Loaded = False
 
 #----------------------------------------
 #------------- Chapitre A ---------------
-#----------- NOM DE CHAPITRE ------------
+#---------- Similitudes Eronées ---------
 #----------------------------------------
 
 #----------------------------------------
@@ -680,7 +681,7 @@ def Aa39(event):
     Continuer1.bind("<Button-1>", Aa40)
 
 def Aa40(event):
-    Dialogue.config(text="On peu faire une trêve ?")
+    Dialogue.config(text="On peut faire une trêve ?")
     Continuer1.bind("<Button-1>", Aa41)
 
 def Aa41(event):
@@ -745,7 +746,7 @@ def Ab1(event):
     Continuer1.bind("<Button-1>", Ab2)
 
 def Ab2(event):
-    Dialogue.config(text="Je ne sais pas ou je suis, \n mais je peu dire que cet endroit est moche.")
+    Dialogue.config(text="Je ne sais pas ou je suis, \n mais je peux dire que cet endroit est moche.")
     Continuer1.bind("<Button-1>", Ab3)
 
 def Ab3(event):
@@ -799,7 +800,7 @@ def Ab8(event):
 
 def Ab9(event):
     NomPerso.config(text=nom, fg="blue")
-    Dialogue.config(text="Qui est-vous ? \n C’est vous qui m’avez kidnappé ?")
+    Dialogue.config(text="Qui êtes-vous ? \n C’est vous qui m’avez kidnappé ?")
     Continuer1.bind("<Button-1>", Ab10)
 
 def Ab10(event):
@@ -977,7 +978,7 @@ def Ab34(event):
 
 def Ab35(event):
     NomPerso.config(text=nom, fg="blue")
-    Dialogue.config(text="Bon , je pourrai vous aider \n si vous me donner de l’argent.")
+    Dialogue.config(text="Bon , je peux vous aider \n si vous me donnez de l’argent.")
     Continuer1.bind("<Button-1>", Ab36)
 
 #----------------------------------------
@@ -1031,7 +1032,7 @@ def Ab42(event):
 
 def Ab43(event):
     NomPerso.config(text=nom, fg="blue")
-    Dialogue.config(text="Je doit voler tout son trésor ? \n Ça va être long.")
+    Dialogue.config(text="Je dois voler tout son trésor ? \n Ça va être long.")
     Continuer1.bind("<Button-1>", Ab44)
 
 def Ab44(event):
@@ -1155,17 +1156,17 @@ def Ab55b(event):
     else:
         Echec = False
     NomPerso.config(text=nom, fg="blue")
-    Dialogue.config(text="Combien pensez vous me payez pour cela?")
+    Dialogue.config(text="Combien pensez vous me payer pour cela?")
     Continuer1.bind("<Button-1>", Ab56b)
 
 def Ab56b(event):
     NomPerso.config(text="Harold", fg="green")
-    Dialogue.config(text="10000 euros, pourquoi ?")
+    Dialogue.config(text="10 000 euros, pourquoi ?")
     Continuer1.bind("<Button-1>", Ab57b)
 
 def Ab57b(event):
     NomPerso.config(text=nom, fg="blue")
-    Dialogue.config(text="10000 euros pour risquer ma vie ? \n C’est trop peu pour cette quête.")
+    Dialogue.config(text="10 000 euros pour risquer ma vie ? \n C’est trop peu pour cette quête.")
     Continuer1.bind("<Button-1>", Ab58b)
 
 def Ab58b(event):
@@ -1578,7 +1579,7 @@ def Ac32b(event):
 
 def Ac33b(event):
     SE_Frappe.play()
-    Dialogue.config(text="Je prend mon élan… \n ...et le fonce sur la porte.")
+    Dialogue.config(text="Je prends mon élan… \n ...et le fonce sur la porte.")
     Continuer1.bind("<Button-1>", Ac34b)
 
 def Ac34b(event):
@@ -1813,7 +1814,7 @@ def Ad18a(event):
     Pistolet = True
     SE_Objet.play()
     Decor.config(image=PC_Normal)
-    Dialogue.config(text="Je prend le Pistolet et \n je regarde en détail l’écran...")
+    Dialogue.config(text="Je prends le Pistolet et \n je regarde en détail l’écran...")
     Continuer1.config(text=">")
     Continuer2.pack_forget()
     Continuer1.bind("<Button-1>", Ad19)
@@ -1924,7 +1925,7 @@ def Ad27(event):
 
 def Ad28(event):
     NomPerso.config(text=nom, fg="blue")
-    Dialogue.config(text="Tien ?")
+    Dialogue.config(text="Tient ?")
     Continuer1.bind("<Button-1>", Ad29)
 
 def Ad29(event):
@@ -1939,7 +1940,7 @@ def Ad30(event):
 
 def Ad31(event):
     NomPerso.config(text=nom, fg="blue")
-    Dialogue.config(text="Cherche sous le tapis de la porte d'entrée.")
+    Dialogue.config(text="'Cherche sous le tapis de la porte d'entrée.'")
     Continuer1.bind("<Button-1>", Ad32)
 
 def Ad32(event):
@@ -1979,8 +1980,9 @@ def Ae1(event):
     Continuer1.bind("<Button-1>", Ae2)
 
 def Ae2(event):
-    Decor.config(image=Maison_Porte_Entree)
+
     if ChambreHaroldOuverte == True:
+        Decor.config(image=Maison_Porte_Entree)
         Dialogue.config(text="Je trouve facilement le tapis.")
     else:
         Dialogue.config(text="Je suppose que je vais retourner à l'entrée.")
@@ -1990,6 +1992,7 @@ def Ae3(event):
     if ChambreHaroldOuverte == True:
         Dialogue.config(text="...")
     else:
+        Decor.config(image=Maison_Porte_Entree)
         NomPerso.config(text="")
         Dialogue.config(text="Je retourne à l'entrée.")
     Continuer1.bind("<Button-1>", Ae4)
@@ -2044,7 +2047,7 @@ def Ae7(event):
 
 #----------------------------------------
 #------------- Chapitre B ---------------
-#----------- NOM DE CHAPITRE ------------
+#---------- Periple Hostille ------------
 #----------------------------------------
 
 #----------------------------------------
@@ -2371,10 +2374,10 @@ def Ba30(event):
 
 def Ba31(event):
     if LockMarais == True:
-        Dialogue.config(text="Je sais déjà ou je doit aller, \n je doit aller à gauche.")
+        Dialogue.config(text="Je sais déjà ou je dois aller, \n je dois aller à gauche.")
         Continuer1.bind("<Button-1>", Ba32a)
     elif LockDisney == True:
-        Dialogue.config(text="Je sais déjà ou je doit aller, \n je doit aller à droite.")
+        Dialogue.config(text="Je sais déjà ou je dois aller, \n je dois aller à droite.")
         Continuer1.bind("<Button-1>", Ba32b)
     else:
         Dialogue.config(text="Je ne sais pas ou aller.")
@@ -2569,6 +2572,7 @@ def Bb12(event):
     Continuer1.bind("<Button-1>", Bb13)
 
 def Bb13(event):
+    Decor.config(image=Disney_Entree_Arme)
     SE_Pistolet_Degainage.play()
     Dialogue.config(text="Si je vous voit faire le zouave, \n je vous fait arrêter.")
     Continuer1.bind("<Button-1>", Bb14)
@@ -2970,7 +2974,7 @@ def Bb52(event):
 
 def Bb53(event):
     Decor.config(image=Disney_GARDE)
-    Dialogue.config(text="Je pourrais demander des informations, \n j'aperçois un homme qui pourrais savoir des choses.")
+    Dialogue.config(text="Je pourrai demander des informations, \n j'aperçois un homme qui pourrais savoir des choses.")
     Continuer1.bind("<Button-1>", Bb54)
 
 def Bb54(event):
@@ -3065,7 +3069,7 @@ def Bb64a(event):
     MenacePassant = True
     NomPerso.config(text=nom, fg="blue")
     if LockDisney == True:
-        Dialogue.config(text="Je le savais tu est \n un de ses espions !")
+        Dialogue.config(text="Je le savais, tu est \n un de ses espions !")
     else:
         Dialogue.config(text="Que caches-tu ? Parle !")
     Continuer1.bind("<Button-1>", Bb65a)
@@ -3151,7 +3155,7 @@ def Bb71(event):
     Continuer1.bind("<Button-1>", Bb72)
 
 def Bb72(event):
-    Dialogue.config(text="Elle me serais très utile.")
+    Dialogue.config(text="Elle me serait très utile.")
     Continuer1.bind("<Button-1>", Bb73)
 
 def Bb73(event):
@@ -3193,10 +3197,7 @@ def Bb78a(event):
 
 def Bb79a(event):
     NomPerso.config(text=nom, fg="blue")
-    if niveau%2 != 0:
-        Dialogue.config(text="Même pas de points supplémentaire.")
-    else:
-        Dialogue.config(text="Et un point en plus !")
+    Dialogue.config(text="Et un point en plus !")
     Continuer1.bind("<Button-1>", Bb80)
 
 #-----------------------------------------------
@@ -3299,7 +3300,7 @@ def Bb90(event):
 
 def Bb91(event):
     if NbMauvaisesActions_Disney > 1:
-        Dialogue.config(text="Rend toi maintenant !")
+        Dialogue.config(text="Rend-toi maintenant !")
     else:
         Dialogue.config(text="Le chateau du Dragon se trouve au Nord.")
     Continuer1.bind("<Button-1>", Bb92)
@@ -3396,7 +3397,7 @@ def Bc3(event):
 def Bc4(event):
     Decor.config(image=Marais_Arrive)
     if LockMarais == True:
-        Dialogue.config(text="Je doit faire attention dans cette forêt.")
+        Dialogue.config(text="Je dois faire attention dans cette forêt.")
     else:
         Dialogue.config(text="Je ne sais pas à quoi m'attendre ici.")
     Continuer1.bind("<Button-1>", Bc5)
@@ -3405,7 +3406,7 @@ def Bc5(event):
     if LockMarais == True:
         Dialogue.config(text="Elle abrite un marais maudit.")
     else:
-        Dialogue.config(text="Je doit rester sur vigilant.")
+        Dialogue.config(text="Je dois rester sur vigilant.")
     Continuer1.bind("<Button-1>", Bc6)
 
 def Bc6(event):
@@ -3428,7 +3429,7 @@ def Bc8(event):
     Continuer1.bind("<Button-1>", Bc9)
 
 def Bc9(event):
-    Dialogue.config(text="Je doit y aller.")
+    Dialogue.config(text="Je dois y aller.")
     Continuer1.bind("<Button-1>", Bc10)
 
 def Bc10(event):
@@ -3510,7 +3511,7 @@ def Bc19(event):
     Continuer1.bind("<Button-1>", Bc20)
 
 def Bc20(event):
-    Dialogue.config(text="Je doit le faire discrètement.")
+    Dialogue.config(text="Je dois le faire discrètement.")
     Continuer1.bind("<Button-1>", Bc21)
 
 #----------------------------------------
@@ -3598,11 +3599,11 @@ def Bc28(event):
         Continuer1.pack(padx=10, pady=10)
     sauvegarde()
     Decor.config(image=Marais_Fiole)
-    Dialogue.config(text="Après quelque temps, \n j'arrive vers un rocher.")
+    Dialogue.config(text="Après quelque temps, \n j'arrive vers un arbre.")
     Continuer1.bind("<Button-1>", Bc29)
 
 def Bc29(event):
-    Dialogue.config(text="Sur le rocher se trouve une fiole d'XP.")
+    Dialogue.config(text="Sur l'arbre se trouve une fiole d'XP.")
     Continuer1.bind("<Button-1>", Bc30)
 
 def Bc30(event):
@@ -3928,7 +3929,7 @@ def Bc52a(event):
     Continuer1.bind("<Button-1>", Bc52b)
 
 def Bc52b(event):
-    Dialogue.config(text="Je ne veut pas perdre plus de temps.")
+    Dialogue.config(text="Je ne veux pas perdre plus de temps.")
     Continuer1.bind("<Button-1>", Bc52c)
 
 def Bc52c(event):
@@ -4087,7 +4088,7 @@ def Bc82(event):
 
 #----------------------------------------
 #------------- Chapitre C ---------------
-#----------- NOM DE CHAPITRE ------------
+#----------- Climat de Braise -----------
 #----------------------------------------
 
 #----------------------------------------
@@ -4723,7 +4724,20 @@ def Cb5(event):
 def Cb6(event):
     Decor.config(image=Chateau_Interieur)
     NomPerso.config(text="")
-    Dialogue.config(text="Devant moi se dresse 3 portes.")
+    if Nb_Porte > 0:
+        mess_ran = random.randint(1,5)
+        if mess_ran == 1:
+            Dialogue.config(text="Je me retrouve encore devant 3 portes.")
+        if mess_ran == 2:
+            Dialogue.config(text="Combien de temps me faudra-t-il pour sortir d'ici ?")
+        if mess_ran == 3:
+            Dialogue.config(text="Encore 3 portes...")
+        if mess_ran == 4:
+            Dialogue.config(text="Décidément, je n'ai pas de chance.")
+        if mess_ran == 5:
+            Dialogue.config(text="Est-ce qu'il y a une sortie au moins ?")
+    else:
+        Dialogue.config(text="Devant moi se dresse 3 portes.")
     Continuer1.bind("<Button-1>", Cb7)
     Porterandom()
 
@@ -4741,6 +4755,8 @@ def Cb7(event):
 #---------- Choix A (Gauche) -----------
 
 def Cb7a(event):
+    global Nb_Porte
+    Nb_Porte = Nb_Porte +1
     Continuer1.config(text=">")
     Continuer2.pack_forget()
     Continuer3.pack_forget()
@@ -4757,6 +4773,8 @@ def Cb7a(event):
 #---------- Choix B (Haut) -----------
 
 def Cb7b(event):
+    global Nb_Porte
+    Nb_Porte = Nb_Porte +1
     Continuer1.config(text=">")
     Continuer2.pack_forget()
     Continuer3.pack_forget()
@@ -4773,6 +4791,8 @@ def Cb7b(event):
 #---------- Choix C (Droite) -----------
 
 def Cb7c(event):
+    global Nb_Porte
+    Nb_Porte = Nb_Porte +1
     Continuer1.config(text=">")
     Continuer2.pack_forget()
     Continuer3.pack_forget()
@@ -4881,9 +4901,9 @@ def Cb12(event):
 def Cb13(event):
     NomPerso.config(text="GARDE", fg="burlywood")
     if GARDE_Hostille <= GARDE_Sympa:
-        Dialogue.config(text="Oui, c'est moi.")
+        Dialogue.config(text="Oui, c'est moi, je vous ai \n vu essayer "+str(Nb_Porte)+ " fois de trouver la sortie.")
     else:
-        Dialogue.config(text="J'ai survécu !")
+        Dialogue.config(text="J'ai survécu ! Je vous félicite \n pour vos "+str(Nb_Porte)+" essais dans le labyrinthe.")
     Continuer1.bind("<Button-1>", Cb14)
 
 def Cb14(event):
@@ -4891,7 +4911,7 @@ def Cb14(event):
     if GARDE_Hostille <= GARDE_Sympa:
         Dialogue.config(text="J'ai l'impression que vous allez causer des problèmes.")
     else:
-        Dialogue.config(text="Vous allez payer pour ça !")
+        Dialogue.config(text="Vous allez payer pour m'avoir blessé !")
     Continuer1.bind("<Button-1>", Cb15)
 
 def Cb15(event):
@@ -5137,7 +5157,7 @@ def Cc7(event):
     Continuer1.bind("<Button-1>", Cc8)
 
 def Cc8(event):
-    Dialogue.config(text="Peut importe ! \n Que vient-tu faire ici ?")
+    Dialogue.config(text="Peu importe ! \n Que vient-tu faire ici ?")
     Continuer1.bind("<Button-1>", Cc9)
 
 def Cc9(event):
@@ -5464,7 +5484,7 @@ def Dragon_conv7(event):
 
 def Dragon_conv8(event):
     NomPerso.config(text=nom, fg="blue")
-    Dialogue.config(text="Si vous me tuer, \n vous faites un meurtre.")
+    Dialogue.config(text="Si vous me tuez, \n vous faites un meurtre.")
     Continuer1.bind("<Button-1>", Dragon_conv9)
 
 def Dragon_conv9(event):
@@ -5496,11 +5516,11 @@ def Dragon_conv12(event):
 def Dragon_conv13(event):
     global DragonBlaze
     DragonBlaze = True
-    Dialogue.config(text="Comment je fais faire le mal \n maintenant ?")
+    Dialogue.config(text="Comment je vais faire le mal \n maintenant ?")
     Continuer1.bind("<Button-1>", Dragon_conv14)
 
 def Dragon_conv14(event):
-    Dialogue.config(text="Bon, tu peu t'en aller humain, \n reprend les clefs.")
+    Dialogue.config(text="Bon, tu peux t'en aller humain, \n reprend les clefs.")
     Continuer1.bind("<Button-1>", Dragon_conv15)
 
 def Dragon_conv15(event):
@@ -5717,7 +5737,7 @@ def Cd9b(event):
     Dialogue.config(text="Ca lui apprendra à \n m'utiliser de la sorte.")
     Continuer1.bind("<Button-1>", Cd10b)
 
-def Cd9b(event):
+def Cd10b(event):
     Dialogue.config(text="Je m'avance donc vers la voiture d'Harold.")
     Continuer1.bind("<Button-1>", Cf1)
 
@@ -6178,7 +6198,7 @@ def Chapitre3(event):
 #------------- Stats ----------------
 
 def Reset(event):
-    global Epee, Flute, Partitions, Pistolet, Carte_Monopoly, ChambreHaroldOuverte, LockMarais, LockDisney, NbMauvaisesActions_Disney, VolMarchand, VolXP, MenacePassant, ErreurMarais, PassMarais, PassDisney, Augmentation, GARDE_Hostille, GARDE_Sympa, bonusobtenu, DragonTue, DragonCharme, DragonBlaze, Checkpoint, Checkpoint_mus
+    global Nb_Porte, Epee, Flute, Partitions, Pistolet, Carte_Monopoly, ChambreHaroldOuverte, LockMarais, LockDisney, NbMauvaisesActions_Disney, VolMarchand, VolXP, MenacePassant, ErreurMarais, PassMarais, PassDisney, Augmentation, GARDE_Hostille, GARDE_Sympa, bonusobtenu, DragonTue, DragonCharme, DragonBlaze, Checkpoint, Checkpoint_mus
     Epee = False
     Flute = False
     Partitions = False
@@ -6197,6 +6217,7 @@ def Reset(event):
     Augmentation = False
     GARDE_Sympa = 0
     GARDE_Hostille = 0
+    Nb_Porte = 0
     bonusobtenu = False
     DragonTue = False
     DragonCharme = False
@@ -6364,7 +6385,7 @@ def LevelUp(event):
             Agilte_Button.pack(padx=5, pady=5)
             Agilte_Button.bind("<Button-1>", AUp)
         else:
-            Agilte_Label.pack(padx=5, pady=5)
+            Agilite_Label.pack(padx=5, pady=5)
         if intelligence < 10:
             Intelligence_Button.pack(padx=5, pady=5)
             Intelligence_Button.bind("<Button-1>", IUp)
@@ -6674,6 +6695,7 @@ def sauvegarde():
     save_file.write(str(DragonTue)+ " \n") #28
     save_file.write(str(DragonCharme)+ " \n")#29
     save_file.write(str(DragonBlaze)+ " \n") #30
+    save_file.write(str(Nb_Porte)+ " \n") #31
 
     save_file.close()
 
@@ -6694,7 +6716,7 @@ def StrToBool(String):
 
 
 def chargement(event):
-    global Loaded, Echec, nom, niveau, agilite, force, charisme, intelligence, Epee, Flute, Partitions, Pistolet, Carte_Monopoly, ChambreHaroldOuverte, LockMarais, LockDisney, NbMauvaisesActions_Disney, VolMarchand, VolXP, MenacePassant, ErreurMarais, PassMarais, PassDisney, Augmentation, GARDE_Hostille, GARDE_Sympa, bonusobtenu, DragonTue, DragonCharme, DragonBlaze, Checkpoint, Checkpoint_mus
+    global Loaded, Echec, nom, niveau, agilite, force, charisme, intelligence, Epee, Flute, Partitions, Pistolet, Carte_Monopoly, ChambreHaroldOuverte, LockMarais, LockDisney, NbMauvaisesActions_Disney, VolMarchand, VolXP, MenacePassant, ErreurMarais, PassMarais, PassDisney, Augmentation, GARDE_Hostille, GARDE_Sympa, Nb_Porte, bonusobtenu, DragonTue, DragonCharme, DragonBlaze, Checkpoint, Checkpoint_mus
     save = open("save.txt", "r")
     save_file = save.readlines()
 
@@ -6732,6 +6754,7 @@ def chargement(event):
     DragonTue = StrToBool(SansRetour(save_file[28]))
     DragonCharme = StrToBool(SansRetour(save_file[29]))
     DragonBlaze = StrToBool(SansRetour(save_file[30]))
+    Nb_Porte = int(SansRetour(save_file[31]))
 
     save.close()
         
