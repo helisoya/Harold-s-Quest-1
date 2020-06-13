@@ -6234,6 +6234,7 @@ def Reset(event):
 def ChoixNom(event):
     fenNom = tkinter.Tk()
     fenNom.title("Création du Personnage")
+    fenNom.iconbitmap(r"gear.ico")
     fenNom.protocol("WM_DELETE_WINDOW", NoClose)
     Nom_StringVar = tkinter.StringVar(fenNom)
 
@@ -6263,6 +6264,7 @@ def CreationPerso(event):
 
     fenCreation = tkinter.Tk()
     fenCreation.title("Création du Personnage")
+    fenCreation.iconbitmap(r"gear.ico")
     fenCreation.protocol("WM_DELETE_WINDOW", NoClose)
     F_value = tkinter.IntVar(fenCreation)
     A_value = tkinter.IntVar(fenCreation)
@@ -6335,6 +6337,7 @@ def LevelUp(event):
     SE_LevelUp.play()
     fenLevelUp = tkinter.Tk()
     fenLevelUp.title("Niveau")
+    fenLevelUp.iconbitmap(r"gear.ico")
 
     niveau = niveau + 1
 
@@ -6785,6 +6788,7 @@ def chargement(event):
 def INVENTAIRE(event):
     feninv = tkinter.Tk()
     feninv.title("Inventaire")
+    feninv.iconbitmap(r"Inv.ico")
     feninv.protocol("WM_DELETE_WINDOW", NoClose)
 
     def NOINVENTAIRE(event):
@@ -6893,10 +6897,7 @@ def INVENTAIRE(event):
 def DEBUGMENU(event):
     fendebug = tkinter.Tk()
     fendebug.title("DEBUG")
-
-    def NODEBUGMENU(event):
-        fendebug.destroy()
-        fenetre.bind("<Insert>", DEBUGMENU)
+    fendebug.iconbitmap(r"gear.ico")
 
     def Debug_ShowStats():
         print()
@@ -6980,12 +6981,10 @@ def DEBUGMENU(event):
     Debug_LockMarais_Button.pack(padx=10, pady=10)
     Debug_LockDisney_Button.pack(padx=10, pady=10)
     Debug_Niveau.pack(padx=10, pady=10)
-    fendebug.bind("<Insert>", NODEBUGMENU)
-    fenetre.bind("<Insert>", NODEBUGMENU)
     fendebug.mainloop()
 
 
-fenetre.bind("<Insert>", DEBUGMENU)
+fenetre.bind("<Up><Up><Down><Down><Left><Right><Left><Right>ba", DEBUGMENU) # Faut pas chercher la logique
 
 
 #------------ Aide --------------------
@@ -6993,8 +6992,9 @@ fenetre.bind("<Insert>", DEBUGMENU)
 def Jeu_Aide(event):
     fenaide = tkinter.Tk()
     fenaide.title("Aide")
+    fenaide.iconbitmap(r"gear.ico")
 
-    Aide_Label = tkinter.Label(fenaide, text="---------------------------------------------------------------- \n Bienvenue sur le projet NSI portant sur l'histoire interactive. \n Pour avancer dans le jeu, cliquez sur les boutons '>'. \n Vous aurez de temps en temps des choix qui seront important pour la suite. \n Choisissez bien car vous pouvez perdre ! \n \n Vous possédez 4 types de statistiques qui vous permettrons de réussir certains choix. \n De temps en temps, vous allez gagner des niveaux. \n A chaque niveau , vous allez pouvoir améliorer vos statistiques. \n \n Faites un clique droit pour afficher l'inventaire. \n Les sauvegardes sont automatiques. \n ----------------------------------------------------------------")
+    Aide_Label = tkinter.Label(fenaide, text="---------------------------------------------------------------- \n Bienvenue dans Harold's Quest. \n Pour avancer dans le jeu, cliquez sur les boutons '>'. \n Vous aurez de temps en temps des choix qui seront important pour la suite. \n Choisissez bien car vous pouvez perdre ! \n \n Vous possédez 4 types de statistiques qui vous permettrons de réussir certains choix. \n De temps en temps, vous allez gagner des niveaux. \n A chaque niveau , vous allez pouvoir améliorer vos statistiques. \n \n Faites un clique droit pour afficher l'inventaire. \n Les sauvegardes sont automatiques. \n ----------------------------------------------------------------")
     Aide_Label.pack()
 
     fenaide.mainloop()
