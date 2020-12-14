@@ -1,7 +1,7 @@
 from distutils.core import setup
 
 setup(
-    name="Harold's Quest1 ",
+    name='HaroldsQuest',
 version = '1.0',
     packages = [''],
     url = '',
